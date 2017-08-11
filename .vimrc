@@ -159,23 +159,29 @@ nnoremap L  <C-w>l
 " =============================== Vundle ====================================
 
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" Specify a directory for plugins
+" - For Neovim: ~/.local/share/nvim/plugged
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
 
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'fatih/vim-go'
-Plugin 'majutsushi/tagbar'
-Plugin 'valloric/youcompleteme'
-Plugin 'mileszs/ack.vim'
-" Plugin 'rust-lang/rust.vim'
-Plugin 'kshenoy/vim-signature'
-" Plugin 'ternjs/tern_for_vim'
+" Make sure you use single quotes
 
-call vundle#end()
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'scrooloose/nerdcommenter'
+" Plug 'ctrlpvim/ctrlp.vim'
+Plug 'fatih/vim-go'
+Plug 'majutsushi/tagbar'
+Plug 'valloric/youcompleteme'
+Plug 'mileszs/ack.vim'
+" Plug 'rust-lang/rust.vim'
+Plug 'kshenoy/vim-signature'
+" Plug 'ternjs/tern_for_vim'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'mbbill/undotree',             { 'on': 'UndotreeToggle'   }
+
+call plug#end()
 filetype on
 
 " =============================== Plugin ====================================
@@ -197,23 +203,23 @@ let g:NERDTrimTrailingWhitespace=1
 " let g:user_emmet_leader_key='<leader>t'
 
 " ctrlp
-let g:ctrlp_map='<leader>p'
-let g:ctrlp_cmd='CtrlP'
-let g:ctrlp_use_caching=1
-let g:ctrlp_by_filename = 1
-let g:ctrlp_clear_cache_on_exit=1
-let g:ctrlp_prompt_mappings = {
-  \ 'PrtSelectMove("j")':   ['<s-tab>'],
-  \ 'PrtSelectMove("k")':   ['<tab>'],
-  \ 'AcceptSelection("t")': ['<cr>'],
-  \ 'PrtClearCache()':      ['<F5>'],
-  \ 'AcceptSelection("e")': ['<2-LeftMouse>'],
-  \ 'ToggleFocus()':        ['<c-j>'],
-  \ 'PrtExpandDir()':       ['<c-k>'],
-  \ }
-let g:ctrlp_custom_ignore = {
-  \'dir':'\v[\/]node_modules$',
-  \}
+" let g:ctrlp_map='<leader>p'
+" let g:ctrlp_cmd='CtrlP'
+" let g:ctrlp_use_caching=1
+" let g:ctrlp_by_filename = 1
+" let g:ctrlp_clear_cache_on_exit=1
+" let g:ctrlp_prompt_mappings = {
+"   \ 'PrtSelectMove("j")':   ['<s-tab>'],
+"   \ 'PrtSelectMove("k")':   ['<tab>'],
+"   \ 'AcceptSelection("t")': ['<cr>'],
+"   \ 'PrtClearCache()':      ['<F5>'],
+"   \ 'AcceptSelection("e")': ['<2-LeftMouse>'],
+"   \ 'ToggleFocus()':        ['<c-j>'],
+"   \ 'PrtExpandDir()':       ['<c-k>'],
+"   \ }
+" let g:ctrlp_custom_ignore = {
+"   \'dir':'\v[\/]node_modules$',
+"   \}
 
 " vim-go
 let g:go_highlight_functions=1
@@ -279,6 +285,66 @@ set completeopt -=preview
 set completeopt=longest,menu
 let g:ycm_collect_identifiers_from_comments_and_strings=1
 let g:ycm_goto_buffer_command='new-or-existing-tab'
+
+" =================================== fzf ======================================
+" This is the default extra key bindings
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+" Default fzf layout
+" - down / up / left / right
+let g:fzf_layout = { 'down': '~40%' }
+
+" In Neovim, you can set up fzf window using a Vim command
+let g:fzf_layout = { 'window': 'enew' }
+let g:fzf_layout = { 'window': '-tabnew' }
+let g:fzf_layout = { 'window': '10split enew' }
+
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+" Enable per-command history.
+" CTRL-N and CTRL-P will be automatically bound to next-history and
+" previous-history instead of down and up. If you don't like the change,
+" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+" Advanced customization using autoload functions
+inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
+
+
+" ----------------------------------------------------------------------------
+" undotree
+" ----------------------------------------------------------------------------
+let g:undotree_WindowLayout = 2
+nnoremap U :UndotreeToggle<CR>
+
+
 
 " ============================ Language Specific ==============================
 
