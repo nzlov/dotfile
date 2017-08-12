@@ -88,8 +88,6 @@ alias goi="go install -v "
 alias gob="go build -v "
 alias gor="go run -v "
 
-alias g="git "
-
 export GOPATH=/workspace/go
 export GOROOT=$HOME/program/go
 export GOROOT_BOOTSTRAP=$HOME/program/go1.4
