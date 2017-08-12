@@ -29,7 +29,8 @@ nnoremap <leader>l gt
 nnoremap <leader>h gT
 nnoremap <leader>x :tabclose<cr>
 nnoremap <leader>w :w<cr>
-nnoremap <leader>q :tabfirst<cr>:tabonly<cr><c-z>
+" nnoremap <leader>q :tabfirst<cr>:tabonly<cr><c-z>
+nnoremap <leader>q :qa!<cr>
 
 nnoremap <leader>t :YcmCompleter GoTo<cr>
 " nnoremap <c-g> :YcmCompleter GoTo<cr>
