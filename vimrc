@@ -287,6 +287,7 @@ let g:ycm_collect_identifiers_from_comments_and_strings=1
 let g:ycm_goto_buffer_command='new-or-existing-tab'
 
 " =================================== fzf ======================================
+nnoremap <leader>p :FZF<cr>
 " This is the default extra key bindings
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
