@@ -290,7 +290,7 @@ let g:ycm_goto_buffer_command='new-or-existing-tab'
 nnoremap <leader>p :FZF<cr>
 " This is the default extra key bindings
 let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
+  \ 'enter': 'tab split',
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
 
