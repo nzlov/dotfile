@@ -170,7 +170,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'scrooloose/nerdcommenter'
-" Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'fatih/vim-go'
 Plug 'majutsushi/tagbar'
 Plug 'valloric/youcompleteme'
@@ -206,21 +206,21 @@ let g:NERDTrimTrailingWhitespace=1
 " ctrlp
 " let g:ctrlp_map='<leader>p'
 " let g:ctrlp_cmd='CtrlP'
-" let g:ctrlp_use_caching=1
-" let g:ctrlp_by_filename = 1
-" let g:ctrlp_clear_cache_on_exit=1
-" let g:ctrlp_prompt_mappings = {
-"   \ 'PrtSelectMove("j")':   ['<s-tab>'],
-"   \ 'PrtSelectMove("k")':   ['<tab>'],
-"   \ 'AcceptSelection("t")': ['<cr>'],
-"   \ 'PrtClearCache()':      ['<F5>'],
-"   \ 'AcceptSelection("e")': ['<2-LeftMouse>'],
-"   \ 'ToggleFocus()':        ['<c-j>'],
-"   \ 'PrtExpandDir()':       ['<c-k>'],
-"   \ }
-" let g:ctrlp_custom_ignore = {
-"   \'dir':'\v[\/]node_modules$',
-"   \}
+ let g:ctrlp_use_caching=1
+ let g:ctrlp_by_filename = 1
+ let g:ctrlp_clear_cache_on_exit=1
+ let g:ctrlp_prompt_mappings = {
+   \ 'PrtSelectMove("j")':   ['<s-tab>'],
+   \ 'PrtSelectMove("k")':   ['<tab>'],
+   \ 'AcceptSelection("t")': ['<cr>'],
+   \ 'PrtClearCache()':      ['<F5>'],
+   \ 'AcceptSelection("e")': ['<2-LeftMouse>'],
+   \ 'ToggleFocus()':        ['<c-j>'],
+   \ 'PrtExpandDir()':       ['<c-k>'],
+   \ }
+ let g:ctrlp_custom_ignore = {
+   \'dir':'\v[\/]node_modules$',
+   \}
 
 " vim-go
 let g:go_highlight_functions=1
