@@ -174,7 +174,8 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'fatih/vim-go'
 Plug 'majutsushi/tagbar'
 Plug 'valloric/youcompleteme'
-Plug 'mileszs/ack.vim'
+"Plug 'mileszs/ack.vim'
+Plug 'rking/ag.vim'
 " Plug 'rust-lang/rust.vim'
 Plug 'kshenoy/vim-signature'
 " Plug 'ternjs/tern_for_vim'
@@ -286,6 +287,11 @@ set completeopt -=preview
 set completeopt=longest,menu
 let g:ycm_collect_identifiers_from_comments_and_strings=1
 let g:ycm_goto_buffer_command='new-or-existing-tab'
+
+
+" ag
+let g:ag_working_path_mode='r'
+
 
 " =================================== fzf ======================================
 nnoremap <leader>p :FZF<cr>
