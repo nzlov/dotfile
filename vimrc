@@ -207,21 +207,21 @@ let g:NERDTrimTrailingWhitespace=1
 " ctrlp
 " let g:ctrlp_map='<leader>p'
 " let g:ctrlp_cmd='CtrlP'
- let g:ctrlp_use_caching=1
- let g:ctrlp_by_filename = 1
- let g:ctrlp_clear_cache_on_exit=1
- let g:ctrlp_prompt_mappings = {
-   \ 'PrtSelectMove("j")':   ['<s-tab>'],
-   \ 'PrtSelectMove("k")':   ['<tab>'],
-   \ 'AcceptSelection("t")': ['<cr>'],
-   \ 'PrtClearCache()':      ['<F5>'],
-   \ 'AcceptSelection("e")': ['<2-LeftMouse>'],
-   \ 'ToggleFocus()':        ['<c-j>'],
-   \ 'PrtExpandDir()':       ['<c-k>'],
-   \ }
- let g:ctrlp_custom_ignore = {
-   \'dir':'\v[\/]node_modules$',
-   \}
+let g:ctrlp_use_caching=1
+let g:ctrlp_by_filename = 1
+let g:ctrlp_clear_cache_on_exit=1
+let g:ctrlp_prompt_mappings = {
+      \ 'PrtSelectMove("j")':   ['<s-tab>'],
+      \ 'PrtSelectMove("k")':   ['<tab>'],
+      \ 'AcceptSelection("t")': ['<cr>'],
+      \ 'PrtClearCache()':      ['<F5>'],
+      \ 'AcceptSelection("e")': ['<2-LeftMouse>'],
+      \ 'ToggleFocus()':        ['<c-j>'],
+      \ 'PrtExpandDir()':       ['<c-k>'],
+      \ }
+let g:ctrlp_custom_ignore = {
+      \'dir':'\v[\/]node_modules$',
+      \}
 
 " vim-go
 let g:go_highlight_functions=1
@@ -250,37 +250,37 @@ let g:tagbar_iconchars=['▸', '▾']
 au FileType go,javascript,rust nested call ResizeTagbar()
 au VimResized * call ResizeTagbar()
 let g:tagbar_type_rust = {
-   \ 'ctagstype' : 'rust',
-   \ 'kinds' : [
-       \'T:type',
-       \'f:function',
-       \'g:enum',
-       \'s:struct',
-       \'m:module',
-       \'c:const',
-       \'t:trait',
-       \'i:impl',
-   \]
-\}
+      \ 'ctagstype' : 'rust',
+      \ 'kinds' : [
+      \'T:type',
+      \'f:function',
+      \'g:enum',
+      \'s:struct',
+      \'m:module',
+      \'c:const',
+      \'t:trait',
+      \'i:impl',
+      \]
+      \}
 let g:tagbar_type_javascript = {
-   \ 'ctagstype' : 'javascript',
-   \ 'kinds' : [
-       \'a:const',
-       \'b:let',
-       \'d:var',
-       \'e:function',
-       \'h:class',
-   \],
-   \ 'sro' : '.',
-   	\ 'kind2scope' : {
-   		\ 't' : 'ctype',
-   		\ 'n' : 'ntype'
-   	\ },
-   	\ 'scope2kind' : {
-   		\ 'ctype' : 't',
-   		\ 'ntype' : 'n'
-   	\ },
-\}
+      \ 'ctagstype' : 'javascript',
+      \ 'kinds' : [
+      \'a:const',
+      \'b:let',
+      \'d:var',
+      \'e:function',
+      \'h:class',
+      \],
+      \ 'sro' : '.',
+      \ 'kind2scope' : {
+      \ 't' : 'ctype',
+      \ 'n' : 'ntype'
+      \ },
+      \ 'scope2kind' : {
+      \ 'ctype' : 't',
+      \ 'ntype' : 'n'
+      \ },
+      \}
 
 " ycm
 set completeopt -=preview
@@ -297,9 +297,9 @@ let g:ag_working_path_mode='r'
 nnoremap <leader>p :FZF<cr>
 " This is the default extra key bindings
 let g:fzf_action = {
-  \ 'enter': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
+      \ 'enter': 'tab split',
+      \ 'ctrl-x': 'split',
+      \ 'ctrl-v': 'vsplit' }
 
 " Default fzf layout
 " - down / up / left / right
@@ -312,18 +312,18 @@ let g:fzf_layout = { 'window': '10split enew' }
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
+      \ { 'fg':      ['fg', 'Normal'],
+      \ 'bg':      ['bg', 'Normal'],
+      \ 'hl':      ['fg', 'Comment'],
+      \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+      \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+      \ 'hl+':     ['fg', 'Statement'],
+      \ 'info':    ['fg', 'PreProc'],
+      \ 'prompt':  ['fg', 'Conditional'],
+      \ 'pointer': ['fg', 'Exception'],
+      \ 'marker':  ['fg', 'Keyword'],
+      \ 'spinner': ['fg', 'Label'],
+      \ 'header':  ['fg', 'Comment'] }
 
 " Enable per-command history.
 " CTRL-N and CTRL-P will be automatically bound to next-history and
