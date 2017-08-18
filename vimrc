@@ -24,7 +24,7 @@ cnoremap ,: :
 let $BASH_ENV="~/.zshrc"
 
 " some leader bindings
-let mapleader=","
+let mapleader="\<Space>"
 nnoremap <leader>l gt
 nnoremap <leader>h gT
 nnoremap <leader>x :tabclose<cr>
@@ -102,7 +102,7 @@ set showmatch
 " search
 set incsearch
 set hlsearch
-nnoremap <space> :nohlsearch<cr>
+" nnoremap <space> :nohlsearch<cr>
 " nnoremap <leader>cp :TagbarClose<cr>:set nonumber<cr>
 " nnoremap <leader>nm :TagbarOpen<cr>:set number<cr>
 set ignorecase
