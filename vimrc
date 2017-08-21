@@ -9,7 +9,7 @@ set nocompatible
 syntax on
 set nobackup
 set noswapfile
-set clipboard=unnamedplus
+set clipboard=unnamed
 
 set term=xterm-256color
 set background=dark
