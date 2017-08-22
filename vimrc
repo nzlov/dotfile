@@ -102,7 +102,7 @@ set showmatch
 " search
 set incsearch
 set hlsearch
-" nnoremap <space> :nohlsearch<cr>
+nnoremap <leader>c :nohlsearch<cr>
 " nnoremap <leader>cp :TagbarClose<cr>:set nonumber<cr>
 " nnoremap <leader>nm :TagbarOpen<cr>:set number<cr>
 set ignorecase
