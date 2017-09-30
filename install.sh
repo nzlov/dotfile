@@ -4,7 +4,7 @@ git clone https://github.com/nzlov/dotfile ~/.nzlovdotfile
 rm ~/.zshrc
 ln -s ~/.nzlovdotfile/zshrc ~/.zshrc
 #source ~/.zshrc
-#curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vimrc
+#curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 rm ~/.vimrc
 ln -s ~/.nzlovdotfile/vimrc ~/.vimrc
 rm ~/.tmux.conf
