@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/nzlov/.oh-my-zsh
+  export ZSH=/Users/nzlov/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -105,11 +105,11 @@ if [ "$TERM" != "linux" ]; then
     install_powerline_precmd
 fi
 
-export GOPATH=/workspace/go
+export GOPATH=$HOME/workspace/go
 export GOROOT=$HOME/program/go
 export GOROOT_BOOTSTRAP=$HOME/program/go1.4
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
-export http_proxy=http://127.0.0.1:7777/
-export https_proxy=http://127.0.0.1:7777/
+export http_proxy=http://127.0.0.1:1087/
+export https_proxy=http://127.0.0.1:1087/
 

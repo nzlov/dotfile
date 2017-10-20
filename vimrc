@@ -80,7 +80,7 @@ let &t_SI="\<Esc>]12;green\x7"
 let &t_EI="\<Esc>]12;purple\x7"
 
 " line number
-set number
+set relativenumber
 set numberwidth=4
 set ruler
 
