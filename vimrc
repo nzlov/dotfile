@@ -81,6 +81,7 @@ let &t_EI="\<Esc>]12;purple\x7"
 
 " line number
 set relativenumber
+set number
 set numberwidth=4
 set ruler
 
