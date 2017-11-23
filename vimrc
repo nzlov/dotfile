@@ -6,13 +6,15 @@
 
 " neccesary setup
 set nocompatible
-syntax on
+syntax enable
 set nobackup
 set noswapfile
 set clipboard=unnamed
 
 set term=xterm-256color
-set background=dark
+"set background=dark
+"colorscheme solarized
+colorscheme lucario
 au BufEnter * if &filetype == "" | setlocal ft=conf | endif
 
 " set noerrorbells visualbell t_vb=
@@ -54,12 +56,10 @@ set statusline+=%1*\ %-20((%P)%L\ \ %5l,%-3c%)
 
 " status line and vertical border
 set fillchars+=vert:\  "there must be a trailling blank at the end
-hi User1 ctermfg=102 ctermbg=235
-hi VertSplit ctermfg=235
-hi StatusLine ctermfg=235
-hi StatusLine ctermbg=235
-hi StatusLineNC ctermfg=235
-hi StatusLineNC ctermbg=235
+"hi User1 ctermfg=102 ctermbg=235
+hi VertSplit ctermfg=NONE ctermbg=NONE
+hi StatusLine ctermfg=NONE ctermbg=NONE
+hi StatusLineNC ctermfg=NONE ctermbg=NONE
 
 " tab line
 hi TabLineFill ctermfg=235
@@ -183,6 +183,7 @@ Plug 'kshenoy/vim-signature'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'mbbill/undotree',             { 'on': 'UndotreeToggle'   }
+Plug 'mhinz/vim-signify'
 
 call plug#end()
 filetype on

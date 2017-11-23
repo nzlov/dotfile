@@ -86,6 +86,8 @@ source $ZSH/oh-my-zsh.sh
 alias gog="go get -u -v "
 alias goi="go install -v "
 alias gob="go build -v "
+alias gobw="GOOS=windows go build -v "
+alias gobl="GOOS=linux go build -v "
 alias gor="go run -v "
 
 function powerline_precmd() {
