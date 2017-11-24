@@ -27,14 +27,17 @@ let $BASH_ENV="~/.zshrc"
 
 " some leader bindings
 let mapleader="\<Space>"
-nnoremap <leader>l gt
-nnoremap <leader>h gT
-nnoremap <leader>x :tabclose<cr>
+nnoremap <leader>L gt
+nnoremap <leader>H gT
+nnoremap <leader>l :bnext<cr> 
+nnoremap <leader>h :bprevious<cr>
+nnoremap <leader>X :tabclose<cr>
+nnoremap <leader>x :bp <BAR> bd #<CR>
 nnoremap <leader>w :w<cr>
 " nnoremap <leader>q :tabfirst<cr>:tabonly<cr><c-z>
 nnoremap <leader>q :qa!<cr>
 
-nnoremap <leader>t :YcmCompleter GoTo<cr>
+nnoremap <leader>t :TagbarToggle<cr>
 " nnoremap <c-g> :YcmCompleter GoTo<cr>
 " nnoremap <c-h> <c-o>
 " nnoremap <c-l> <c-i>
@@ -62,9 +65,9 @@ hi StatusLine ctermfg=NONE ctermbg=NONE
 hi StatusLineNC ctermfg=NONE ctermbg=NONE
 
 " tab line
-hi TabLineFill ctermfg=235
-hi TabLine cterm=bold ctermbg=235 ctermfg=30
-hi TabLineSel ctermfg=28
+"hi TabLineFill ctermfg=235
+"hi TabLine cterm=bold ctermbg=235 ctermfg=30
+"hi TabLineSel ctermfg=28
 
 " visual mode
 hi Visual ctermbg=166
@@ -171,12 +174,11 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'scrooloose/nerdcommenter'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'fatih/vim-go'
 Plug 'majutsushi/tagbar'
 Plug 'valloric/youcompleteme'
 "Plug 'mileszs/ack.vim'
-Plug 'rking/ag.vim'
+"Plug 'rking/ag.vim'
 " Plug 'rust-lang/rust.vim'
 Plug 'kshenoy/vim-signature'
 " Plug 'ternjs/tern_for_vim'
@@ -184,6 +186,11 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'mbbill/undotree',             { 'on': 'UndotreeToggle'   }
 Plug 'mhinz/vim-signify'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'bling/vim-bufferline'
+Plug 'SirVer/ultisnips'
+
 
 call plug#end()
 filetype on
@@ -205,25 +212,6 @@ let g:NERDTrimTrailingWhitespace=1
 
 " emmet
 " let g:user_emmet_leader_key='<leader>t'
-
-" ctrlp
-" let g:ctrlp_map='<leader>p'
-" let g:ctrlp_cmd='CtrlP'
-let g:ctrlp_use_caching=1
-let g:ctrlp_by_filename = 1
-let g:ctrlp_clear_cache_on_exit=1
-let g:ctrlp_prompt_mappings = {
-      \ 'PrtSelectMove("j")':   ['<s-tab>'],
-      \ 'PrtSelectMove("k")':   ['<tab>'],
-      \ 'AcceptSelection("t")': ['<cr>'],
-      \ 'PrtClearCache()':      ['<F5>'],
-      \ 'AcceptSelection("e")': ['<2-LeftMouse>'],
-      \ 'ToggleFocus()':        ['<c-j>'],
-      \ 'PrtExpandDir()':       ['<c-k>'],
-      \ }
-let g:ctrlp_custom_ignore = {
-      \'dir':'\v[\/]node_modules$',
-      \}
 
 " vim-go
 let g:go_highlight_functions=1
@@ -290,16 +278,25 @@ set completeopt=longest,menu
 let g:ycm_collect_identifiers_from_comments_and_strings=1
 let g:ycm_goto_buffer_command='new-or-existing-tab'
 
+" ultisnips
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-l>"
 
 " ag
 let g:ag_working_path_mode='r'
 
+" airline
+" let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_solarized_bg='dark'
+let g:airline_powerline_fonts = 1
 
 " =================================== fzf ======================================
 nnoremap <leader>p :FZF<cr>
 " This is the default extra key bindings
 let g:fzf_action = {
-      \ 'enter': 'tab split',
+      \ 'ctrl-t': 'tab split',
       \ 'ctrl-x': 'split',
       \ 'ctrl-v': 'vsplit' }
 
