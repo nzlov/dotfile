@@ -27,17 +27,20 @@ let $BASH_ENV="~/.zshrc"
 
 " some leader bindings
 let mapleader="\<Space>"
-nnoremap <leader>L gt
-nnoremap <leader>H gT
-nnoremap <leader>l :bnext<cr> 
-nnoremap <leader>h :bprevious<cr>
-nnoremap <leader>X :tabclose<cr>
-nnoremap <leader>x :bp <BAR> bd #<CR>
+nnoremap <leader>l gt
+nnoremap <leader>h gT
+nnoremap <leader>L :bnext<cr> 
+nnoremap <leader>H :bprevious<cr>
+nnoremap <leader>x :tabclose<cr>
+nnoremap <leader>X :bp <BAR> bd #<CR>
 nnoremap <leader>w :w<cr>
 " nnoremap <leader>q :tabfirst<cr>:tabonly<cr><c-z>
 nnoremap <leader>q :qa!<cr>
 
 nnoremap <leader>t :TagbarToggle<cr>
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
+nnoremap <leader>a :cclose<CR>
 " nnoremap <c-g> :YcmCompleter GoTo<cr>
 " nnoremap <c-h> <c-o>
 " nnoremap <c-l> <c-i>
@@ -181,15 +184,15 @@ Plug 'valloric/youcompleteme'
 "Plug 'rking/ag.vim'
 " Plug 'rust-lang/rust.vim'
 Plug 'kshenoy/vim-signature'
-" Plug 'ternjs/tern_for_vim'
+"Plug 'ternjs/tern_for_vim'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'mbbill/undotree',             { 'on': 'UndotreeToggle'   }
 Plug 'mhinz/vim-signify'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'bling/vim-bufferline'
 Plug 'SirVer/ultisnips'
+"Plug 'bling/vim-bufferline'
 
 
 call plug#end()
@@ -220,8 +223,16 @@ let g:go_highlight_structs=1
 let g:go_highlight_interfaces=1
 let g:go_highlight_operators=1
 let g:go_highlight_build_constrants=1
+let g:go_highlight_extra_types = 1
 let g:go_gocode_unimported_packages=1
 let g:go_fmt_command='goimports'
+let g:go_auto_type_info = 1
+"let g:go_metalinter_enabled = ['golint']
+let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck', 'deadcode', 'structcheck', 'maligned', 'megacheck', 'dupl', 'interfacer', 'goconst']
+"let g:go_metalinter_autosave_enabled = ['golint']
+"let g:go_metalinter_autosave = 1
+"let g:go_metalinter_deadline = "5s"
+let g:go_list_type = "quickfix"
 " let g:go_fmt_autosave=0
 
 " auto-pairs
@@ -287,7 +298,7 @@ let g:ag_working_path_mode='r'
 
 " airline
 " let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_nr_show = 1
+"let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_solarized_bg='dark'
 let g:airline_powerline_fonts = 1
@@ -296,7 +307,7 @@ let g:airline_powerline_fonts = 1
 nnoremap <leader>p :FZF<cr>
 " This is the default extra key bindings
 let g:fzf_action = {
-      \ 'ctrl-t': 'tab split',
+      \ 'enter': 'tab split',
       \ 'ctrl-x': 'split',
       \ 'ctrl-v': 'vsplit' }
 
@@ -353,39 +364,16 @@ nnoremap U :UndotreeToggle<CR>
 " go
 augroup go
   autocmd!
+  au BufWritePost *.go :GoBuild
   au FileType go nnoremap <leader>r :w !go run %<cr>
+  au FileType go nnoremap <leader>m :GoMetaLinter <cr>
   au FileType go setlocal expandtab
-augroup END
-
-" rust
-augroup rust
-  autocmd!
-  au FileType rust nnoremap <leader>r :w !cargo check -q && cargo run<cr>
-  au FileType rust setlocal expandtab
-augroup END
-
-" lisp
-augroup lisp
-  autocmd!
-  au BufRead *.el set noautoindent
-  au BufRead *.el nnoremap <leader>r :w !~/.util/el-to-lisp < % \| sbcl --script<cr>
-  au BufRead *.lisp nnoremap <leader>r :w !sbcl --script %<cr>
-  au BufRead *.el call RegisterGlobals()
-  au BufWritePre *.el call IndentEl()
 augroup END
 
 " sh
 augroup sh
   autocmd!
   au BufRead *.sh nnoremap <leader>r :w !bash %<cr>
-augroup END
-
-" node.js
-augroup node
-  autocmd!
-  au BufRead *.js nnoremap <leader>r :w !node %<cr>
-  au BufWritePre *.js call Format("js")
-  au BufRead *.js setlocal expandtab
 augroup END
 
 " html
