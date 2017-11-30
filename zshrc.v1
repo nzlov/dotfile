@@ -7,7 +7,7 @@
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="spaceship"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -90,22 +90,22 @@ alias gobw="GOOS=windows go build -v "
 alias gobl="GOOS=linux go build -v "
 alias gor="go run -v "
 
-function powerline_precmd() {
-    PS1="$(powerline-shell --shell zsh $?)"
-}
-
-function install_powerline_precmd() {
-  for s in "${precmd_functions[@]}"; do
-    if [ "$s" = "powerline_precmd" ]; then
-      return
-    fi
-  done
-  precmd_functions+=(powerline_precmd)
-}
-
-if [ "$TERM" != "linux" ]; then
-    install_powerline_precmd
-fi
+#function powerline_precmd() {
+#    PS1="$(powerline-shell --shell zsh $?)"
+#}
+#
+#function install_powerline_precmd() {
+#  for s in "${precmd_functions[@]}"; do
+#    if [ "$s" = "powerline_precmd" ]; then
+#      return
+#    fi
+#  done
+#  precmd_functions+=(powerline_precmd)
+#}
+#
+#if [ "$TERM" != "linux" ]; then
+#    install_powerline_precmd
+#fi
 
 export GOPATH=$HOME/workspace/go
 export GOROOT=$HOME/program/go
@@ -115,3 +115,6 @@ export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 export http_proxy=http://127.0.0.1:1087/
 export https_proxy=http://127.0.0.1:1087/
 
+
+
+source "/Users/nzlov/.oh-my-zsh/custom/themes/spaceship.zsh-theme"

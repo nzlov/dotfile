@@ -1,0 +1,81 @@
+source ~/.zplug/init.zsh
+
+# Plugin
+zplug "plugins/git",   from:oh-my-zsh
+zplug "plugins/golang",   from:oh-my-zsh
+zplug "plugins/history",   from:oh-my-zsh
+zplug "plugins/tmux",   from:oh-my-zsh
+zplug "plugins/wd",   from:oh-my-zsh
+zplug "geometry-zsh/geometry"
+zplug "djui/alias-tips"
+zplug "zsh-users/zsh-autosuggestions"
+zplug "ytet5uy4/fzf-widgets"
+
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+# Then, source plugins and add commands to $PATH
+zplug load --verbose
+
+# Plugin Config
+if zplug check 'ytet5uy4/fzf-widgets'; then
+  # Map widgets to key
+  bindkey '^@'  fzf-select-widget
+  bindkey '^@.' fzf-edit-dotfiles
+  bindkey '^@c' fzf-change-directory
+  bindkey '^@n' fzf-change-named-directory
+  bindkey '^@f' fzf-edit-files
+  bindkey '^@k' fzf-kill-processes
+  bindkey '^@s' fzf-exec-ssh
+  bindkey '^\'  fzf-change-recent-directory
+  bindkey '^r'  fzf-insert-history
+  bindkey '^xf' fzf-insert-files
+  bindkey '^xd' fzf-insert-directory
+  bindkey '^xn' fzf-insert-named-directory
+
+  ## Git
+  bindkey '^@g'  fzf-select-git-widget
+  bindkey '^@ga' fzf-git-add-files
+  bindkey '^@gc' fzf-git-change-repository
+
+  # GitHub
+  bindkey '^@h'  fzf-select-github-widget
+  bindkey '^@hs' fzf-github-show-issue
+  bindkey '^@hc' fzf-github-close-issue
+
+  ## Docker
+  bindkey '^@d'  fzf-select-docker-widget
+  bindkey '^@dc' fzf-docker-remove-containers
+  bindkey '^@di' fzf-docker-remove-images
+  bindkey '^@dv' fzf-docker-remove-volumes
+
+  # Enable Exact-match by fzf-insert-history
+  FZF_WIDGET_OPTS[insert-history]='--exact'
+
+  # Start fzf in a tmux pane
+  FZF_WIDGET_TMUX=1
+fi
+
+# Alias
+alias gog="go get -u -v "
+alias goi="go install -v "
+alias gob="go build -v "
+alias gobw="GOOS=windows go build -v "
+alias gobl="GOOS=linux go build -v "
+alias gor="go run -v "
+
+# Export
+export GOPATH=$HOME/workspace/go
+export GOROOT=$HOME/program/go
+export GOROOT_BOOTSTRAP=$HOME/program/go1.4
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+
+export http_proxy=http://127.0.0.1:1087/
+export https_proxy=http://127.0.0.1:1087/
+
+
