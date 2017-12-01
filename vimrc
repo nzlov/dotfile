@@ -14,7 +14,8 @@ set clipboard=unnamed
 set term=xterm-256color
 "set background=dark
 "colorscheme solarized
-colorscheme lucario
+"colorscheme lucario
+colorscheme nord
 au BufEnter * if &filetype == "" | setlocal ft=conf | endif
 
 " set noerrorbells visualbell t_vb=
@@ -189,6 +190,7 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'mbbill/undotree',             { 'on': 'UndotreeToggle'   }
 Plug 'mhinz/vim-signify'
+Plug 'arcticicestudio/nord-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'SirVer/ultisnips'
@@ -299,9 +301,9 @@ let g:ag_working_path_mode='r'
 " let g:airline#extensions#tabline#enabled = 1
 "let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_solarized_bg='dark'
+"let g:airline_solarized_bg='dark'
 let g:airline_powerline_fonts = 1
-
+let g:airline_theme='nord'
 
 " =================================== fzf ======================================
 nnoremap <leader>p :FZF<cr>
