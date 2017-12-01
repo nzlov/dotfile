@@ -1,0 +1,50 @@
+source ~/.nzlovdotfile/antigen.zsh
+
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
+
+antigen bundles <<EOBUNDLES
+# Bundles from the default repo (robbyrussell's oh-my-zsh).
+brew 
+command-not-found
+cp
+git
+go
+sudo
+tmux 
+wd
+
+# github repos 
+zsh-users/zsh-syntax-highlighting
+geometry-zsh/geometry
+djui/alias-tips
+zsh-users/zsh-autosuggestions
+ytet5uy4/fzf-widgets
+EOBUNDLES
+
+# Load the theme.
+antigen theme geometryl
+
+# Tell Antigen that you're done.
+antigen apply
+
+
+# Alias
+alias v="vim"
+alias gog="go get -u -v "
+alias goi="go install -v "
+alias gob="go build -v "
+alias gobw="GOOS=windows go build -v "
+alias gobl="GOOS=linux go build -v "
+alias gor="go run -v "
+
+# Export
+export GOPATH=$HOME/workspace/go
+export GOROOT=$HOME/program/go
+export GOROOT_BOOTSTRAP=$HOME/program/go1.4
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+
+export http_proxy=http://127.0.0.1:1087/
+export https_proxy=http://127.0.0.1:1087/
+
+

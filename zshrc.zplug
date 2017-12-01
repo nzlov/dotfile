@@ -1,7 +1,16 @@
 source ~/.zplug/init.zsh
 
 # Plugin
-zplug "robbyrussell/oh-my-zsh"
+zplug "plugins/brew",                               from:oh-my-zsh
+zplug "plugins/command-not-found",                  from:oh-my-zsh
+zplug "plugins/cp",                                 from:oh-my-zsh
+zplug "plugins/git",                                from:oh-my-zsh
+zplug "plugins/go",                                 from:oh-my-zsh
+zplug "plugins/sudo",                               from:oh-my-zsh
+zplug "plugins/tmux",                               from:oh-my-zsh
+zplug "plugins/wd",                                 from:oh-my-zsh
+
+zplug "zsh-users/zsh-syntax-highlighting"
 zplug "geometry-zsh/geometry"
 zplug "djui/alias-tips"
 zplug "zsh-users/zsh-autosuggestions"
@@ -57,10 +66,11 @@ if zplug check 'ytet5uy4/fzf-widgets'; then
   FZF_WIDGET_TMUX=1
 fi
 
-plugins=(git golang wd tmux)
+export ZSH=~/.zplug/repos/robbyrussell/oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
 # Alias
+alias v="vim"
 alias gog="go get -u -v "
 alias goi="go install -v "
 alias gob="go build -v "
