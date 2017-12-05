@@ -44,7 +44,4 @@ export GOROOT=$HOME/program/go
 export GOROOT_BOOTSTRAP=$HOME/program/go1.4
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
-export http_proxy=http://127.0.0.1:1087/
-export https_proxy=http://127.0.0.1:1087/
-
-
+source ~/.zshrc.local
