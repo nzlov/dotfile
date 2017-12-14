@@ -393,7 +393,6 @@ nnoremap U :UndotreeToggle<CR>
 " go
 augroup go
   autocmd!
-  au BufWritePost *.go :GoBuild
   au FileType go nnoremap <leader>r :w !go run %<cr>
   au FileType go nnoremap <leader>m :GoMetaLinter <cr>
   au FileType go setlocal expandtab
