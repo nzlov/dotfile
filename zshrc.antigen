@@ -39,6 +39,8 @@ alias gobl="GOOS=linux go build -v "
 alias gor="go run -v "
 
 # Export
+export LANG=zh_CN.UTF-8
+export LC_ALL=zh_CN.UTF-8
 export GOPATH=$HOME/workspace/go
 export GOROOT=$HOME/program/go
 export GOROOT_BOOTSTRAP=$HOME/program/go1.4
