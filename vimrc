@@ -135,8 +135,8 @@ set fileencodings=ucs-bom,utf-8
 set scrolloff=3
 
 " bind <esc> to hl in Insert mode and Visual
-inoremap hl <esc>
-vnoremap hl <esc>
+inoremap C-c <esc>
+vnoremap C-c <esc>
 
 " change bindings for moving between windows
 nnoremap J  <C-w>j
@@ -176,6 +176,7 @@ call plug#begin('~/.vim/plugged')
 " Make sure you use single quotes
 
 Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'scrooloose/nerdcommenter'
 Plug 'fatih/vim-go'
@@ -189,11 +190,13 @@ Plug 'kshenoy/vim-signature'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'mbbill/undotree',             { 'on': 'UndotreeToggle'   }
-Plug 'mhinz/vim-signify'
+"Plug 'mhinz/vim-signify'
 Plug 'arcticicestudio/nord-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'SirVer/ultisnips'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 "Plug 'bling/vim-bufferline'
 
 call plug#end()
@@ -367,6 +370,7 @@ nnoremap U :UndotreeToggle<CR>
 augroup go
   autocmd!
   au FileType go nnoremap <leader>r :w !go run %<cr>
+  au FileType go nnoremap <leader>gr :GoReferrers<cr>
   au FileType go nnoremap <leader>m :GoMetaLinter <cr>
   au FileType go setlocal expandtab
 augroup END
