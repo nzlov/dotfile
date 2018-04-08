@@ -11,11 +11,21 @@ set nobackup
 set noswapfile
 set clipboard=unnamed
 
-set term=xterm-256color
+if !exists("g:gui_oni")
+  if $COLORTERM == 'truecolor'
+      set termguicolors
+  else
+      set term=xterm
+      set t_Co=256
+  endif
+endif
+
+
 "set background=dark
 "colorscheme solarized
-"colorscheme lucario
-colorscheme nord
+colorscheme lucario
+"colorscheme nord
+"
 au BufEnter * if &filetype == "" | setlocal ft=conf | endif
 
 " set noerrorbells visualbell t_vb=
@@ -171,7 +181,11 @@ filetype off
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
+if has('nvim')
+call plug#begin('~/.config/nvim/plugged')
+else
 call plug#begin('~/.vim/plugged')
+endif
 
 " Make sure you use single quotes
 
@@ -194,19 +208,25 @@ Plug 'mbbill/undotree',             { 'on': 'UndotreeToggle'   }
 Plug 'arcticicestudio/nord-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'SirVer/ultisnips'
+"Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 "Plug 'bling/vim-bufferline'
 
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
+"if has('nvim')
+"  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"else
+"  Plug 'Shougo/deoplete.nvim'
+"  Plug 'roxma/nvim-yarp'
+"  Plug 'roxma/vim-hug-neovim-rpc'
+"endif
+"Plug 'zchee/deoplete-go', { 'do': 'make'}
+
+Plug 'roxma/nvim-completion-manager'
+if !has('nvim')
+    Plug 'roxma/vim-hug-neovim-rpc'
 endif
-Plug 'zchee/deoplete-go', { 'do': 'make'}
+
 
 call plug#end()
 filetype on
@@ -317,6 +337,12 @@ let g:airline_theme='nord'
 
 let g:deoplete#enable_at_startup = 1
 
+" =================================== fzf ======================================
+imap <expr> <CR>  (pumvisible() ?  "\<c-y>\<Plug>(expand_or_nl)" : "\<CR>")
+imap <expr> <Plug>(expand_or_nl) (cm#completed_is_snippet() ? "\<C-U>":"\<CR>")
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" =================================== fzf END ======================================
 " =================================== fzf ======================================
 nnoremap <leader>p :FZF<cr>
 " This is the default extra key bindings
