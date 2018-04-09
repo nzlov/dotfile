@@ -9,6 +9,7 @@ set nocompatible
 syntax enable
 set nobackup
 set noswapfile
+set autowrite
 set clipboard=unnamed
 
 set term=xterm-256color
@@ -191,7 +192,7 @@ Plug 'kshenoy/vim-signature'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'mbbill/undotree',             { 'on': 'UndotreeToggle'   }
-"Plug 'mhinz/vim-signify'
+Plug 'mhinz/vim-signify'
 Plug 'arcticicestudio/nord-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'

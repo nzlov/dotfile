@@ -9,6 +9,7 @@ set nocompatible
 syntax enable
 set nobackup
 set noswapfile
+set autowrite
 set clipboard=unnamed
 
 if !exists("g:gui_oni")
@@ -204,7 +205,7 @@ Plug 'kshenoy/vim-signature'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'mbbill/undotree',             { 'on': 'UndotreeToggle'   }
-"Plug 'mhinz/vim-signify'
+Plug 'mhinz/vim-signify'
 Plug 'arcticicestudio/nord-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -212,15 +213,6 @@ Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 "Plug 'bling/vim-bufferline'
-
-"if has('nvim')
-"  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"else
-"  Plug 'Shougo/deoplete.nvim'
-"  Plug 'roxma/nvim-yarp'
-"  Plug 'roxma/vim-hug-neovim-rpc'
-"endif
-"Plug 'zchee/deoplete-go', { 'do': 'make'}
 
 Plug 'roxma/nvim-completion-manager'
 if !has('nvim')
@@ -409,6 +401,7 @@ augroup go
   autocmd!
   au FileType go nnoremap <leader>r :w !go run %<cr>
   au FileType go nnoremap <leader>gr :GoReferrers<cr>
+  au FileType go nnoremap <leader>b :GoBuild<cr>
   au FileType go nnoremap <leader>m :GoMetaLinter <cr>
   au FileType go,javascript,rust nested call ResizeTagbar()
   au VimResized * call ResizeTagbar()
