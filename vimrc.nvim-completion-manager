@@ -335,14 +335,13 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='nord'
 
-let g:deoplete#enable_at_startup = 1
 
-" =================================== fzf ======================================
+" =================================== NVIM-Completion-Manager  =================
 imap <expr> <CR>  (pumvisible() ?  "\<c-y>\<Plug>(expand_or_nl)" : "\<CR>")
 imap <expr> <Plug>(expand_or_nl) (cm#completed_is_snippet() ? "\<C-U>":"\<CR>")
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-" =================================== fzf END ======================================
+" =================================== NVIM-Completion-Manager END ==============
 " =================================== fzf ======================================
 nnoremap <leader>p :FZF<cr>
 " This is the default extra key bindings
