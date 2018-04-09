@@ -21,7 +21,7 @@ if !exists("g:gui_oni")
 endif
 
 
-"set background=dark
+set background=dark
 "colorscheme solarized
 colorscheme lucario
 "colorscheme nord
@@ -145,8 +145,8 @@ set fileencodings=ucs-bom,utf-8
 set scrolloff=3
 
 " bind <esc> to hl in Insert mode and Visual
-inoremap C-c <esc>
-vnoremap C-c <esc>
+inoremap <c-c> <esc>
+vnoremap <c-c> <esc>
 
 " change bindings for moving between windows
 nnoremap J  <C-w>j
@@ -208,7 +208,7 @@ Plug 'mbbill/undotree',             { 'on': 'UndotreeToggle'   }
 Plug 'arcticicestudio/nord-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-"Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 "Plug 'bling/vim-bufferline'
@@ -315,14 +315,15 @@ let g:tagbar_type_javascript = {
       \}
 
 " ycm
-set completeopt -=preview
-set completeopt=longest,menu
-let g:ycm_collect_identifiers_from_comments_and_strings=1
-let g:ycm_goto_buffer_command='new-or-existing-tab'
+"set completeopt -=preview
+"set completeopt=longest,menu
+"let g:ycm_collect_identifiers_from_comments_and_strings=1
+"let g:ycm_goto_buffer_command='new-or-existing-tab'
 
 " ultisnips
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<c-l>"
+"let g:UltiSnipsExpandTrigger="<c-l>"
+let g:UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
 
 " ag
 let g:ag_working_path_mode='r'
@@ -337,10 +338,13 @@ let g:airline_theme='nord'
 
 
 " =================================== NVIM-Completion-Manager  =================
+let g:cm_matcher = {'module': 'cm_matchers.fuzzy_matcher', 'case': 'smartcase'}
+inoremap <silent> <c-u> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
 imap <expr> <CR>  (pumvisible() ?  "\<c-y>\<Plug>(expand_or_nl)" : "\<CR>")
 imap <expr> <Plug>(expand_or_nl) (cm#completed_is_snippet() ? "\<C-U>":"\<CR>")
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+imap <c-g> <Plug>(cm_force_refresh)
 " =================================== NVIM-Completion-Manager END ==============
 " =================================== fzf ======================================
 nnoremap <leader>p :FZF<cr>
