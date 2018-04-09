@@ -9,8 +9,8 @@ set nocompatible
 syntax enable
 set nobackup
 set noswapfile
-set autowrite
 set clipboard=unnamed
+set autowrite
 
 if !exists("g:gui_oni")
   if $COLORTERM == 'truecolor'
@@ -50,8 +50,8 @@ nnoremap <leader>w :w<cr>
 nnoremap <leader>q :qa!<cr>
 
 nnoremap <leader>t :TagbarToggle<cr>
-map <C-n> :cnext<CR>
-map <C-m> :cprevious<CR>
+nmap <C-n> :cnext<CR>
+nmap <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
 " nnoremap <c-g> :YcmCompleter GoTo<cr>
 " nnoremap <c-h> <c-o>
@@ -272,6 +272,7 @@ let g:AutoPairsCenterLine=0
 let g:tagbar_left=1
 let g:tagbar_width=50
 let g:tagbar_iconchars=['▸', '▾']
+let g:tagbar_autopreview = 1
 " au FileType go nested :TagbarOpen
 let g:tagbar_type_rust = {
       \ 'ctagstype' : 'rust',
@@ -403,8 +404,9 @@ augroup go
   au FileType go nnoremap <leader>gr :GoReferrers<cr>
   au FileType go nnoremap <leader>b :GoBuild<cr>
   au FileType go nnoremap <leader>m :GoMetaLinter <cr>
-  au FileType go,javascript,rust nested call ResizeTagbar()
   au VimResized * call ResizeTagbar()
+  au BufRead *.go nested call ResizeTagbar()
+"  au InsertLeave *.go nested :GoBuild!<cr>
 augroup END
 
 " sh
@@ -445,8 +447,8 @@ augroup END
 " resize tagbar according to main window's size
 function ResizeTagbar()
   " debug
-  " echom winwidth(0).":".winwidth(1)
-  if winwidth(0) < 100
+ "  echom winwidth(0).":".winwidth(1)
+  if winwidth(0) < 150
     execute "TagbarClose"
   else
     execute "TagbarOpen"
