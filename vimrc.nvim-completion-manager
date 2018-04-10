@@ -106,9 +106,9 @@ set ruler
 " tab
 set smarttab
 set expandtab
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 
 " indent
 set smartindent
@@ -213,6 +213,7 @@ Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 "Plug 'bling/vim-bufferline'
+Plug 'w0rp/ale'
 
 Plug 'roxma/nvim-completion-manager'
 if !has('nvim')
@@ -242,6 +243,8 @@ let g:NERDTrimTrailingWhitespace=1
 " let g:user_emmet_leader_key='<leader>t'
 
 " vim-go
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
 let g:go_highlight_functions=1
 let g:go_highlight_methods=1
 let g:go_highlight_structs=1
@@ -249,12 +252,13 @@ let g:go_highlight_interfaces=1
 let g:go_highlight_operators=1
 let g:go_highlight_build_constrants=1
 let g:go_highlight_extra_types = 1
+let g:go_auto_sameids = 1
 let g:go_gocode_unimported_packages=1
 let g:go_fmt_command='goimports'
 let g:go_auto_type_info = 1
 "let g:go_metalinter_enabled = ['golint']
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck', 'deadcode', 'structcheck', 'maligned', 'megacheck', 'dupl', 'interfacer', 'goconst']
-"let g:go_metalinter_autosave_enabled = ['golint']
+"let g:go_metalinter_autosave_enabled = ['gotype']
 "let g:go_metalinter_autosave = 1
 "let g:go_metalinter_deadline = "5s"
 let g:go_list_type = "quickfix"
@@ -272,7 +276,7 @@ let g:AutoPairsCenterLine=0
 let g:tagbar_left=1
 let g:tagbar_width=50
 let g:tagbar_iconchars=['▸', '▾']
-let g:tagbar_autopreview = 1
+"let g:tagbar_autopreview = 1
 " au FileType go nested :TagbarOpen
 let g:tagbar_type_rust = {
       \ 'ctagstype' : 'rust',
@@ -328,6 +332,14 @@ let g:airline#extensions#tabline#enabled = 1
 "let g:airline_solarized_bg='dark'
 let g:airline_powerline_fonts = 1
 let g:airline_theme='nord'
+
+" ale
+let b:ale_linters = {'go':['goimports','gotype']}
+let g:ale_sign_column_always = 1
+let g:airline#extensions#ale#enabled = 1
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
 
 
 " =================================== NVIM-Completion-Manager  =================
