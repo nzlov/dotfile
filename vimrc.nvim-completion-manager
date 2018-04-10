@@ -333,7 +333,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='nord'
 
-" ale
+"==========================ale=================================================
 let g:ale_linters = {'go':['goimports','gotype']}
 let g:ale_open_list=1
 let g:ale_set_quickfix=1
@@ -344,6 +344,10 @@ let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚡'
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+augroup CloseLoclistWindowGroup
+   autocmd!
+   autocmd QuitPre * if empty(&buftype) | lclose | endif
+augroup END
 
 
 
@@ -355,7 +359,7 @@ imap <expr> <Plug>(expand_or_nl) (cm#completed_is_snippet() ? "\<C-U>":"\<CR>")
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 imap <c-g> <Plug>(cm_force_refresh)
-" =================================== NVIM-Completion-Manager END ==============
+
 " =================================== fzf ======================================
 nnoremap <leader>p :FZF<cr>
 " This is the default extra key bindings
