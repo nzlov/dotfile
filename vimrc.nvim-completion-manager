@@ -334,9 +334,14 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme='nord'
 
 " ale
-let b:ale_linters = {'go':['goimports','gotype']}
-let g:ale_sign_column_always = 1
+let g:ale_linters = {'go':['goimports','gotype']}
+let g:ale_open_list=1
+let g:ale_set_quickfix=1
 let g:airline#extensions#ale#enabled = 1
+let g:ale_sign_column_always = 1
+"自定义error和warning图标
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚡'
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
@@ -359,10 +364,15 @@ let g:fzf_action = {
       \ 'ctrl-x': 'split',
       \ 'ctrl-v': 'vsplit' }
 
+let g:fzf_buffers_jump = 1
+
 " Default fzf layout
 " - down / up / left / right
-let g:fzf_layout = { 'down': '~40%' }
-
+if has("nvim")
+    let g:fzf_layout = { 'down': '~40%' }
+else
+    let g:fzf_layout = {'window':'enew'} 
+endif
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
       \ { 'fg':      ['fg', 'Normal'],
