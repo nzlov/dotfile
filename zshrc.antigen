@@ -32,6 +32,7 @@ antigen apply
 # Alias
 alias v="nvim"
 alias gog="go get -u -v "
+alias gogu="go get -v "
 alias goi="go install -v "
 alias gob="go build -v "
 alias gobw="GOOS=windows go build -v "
