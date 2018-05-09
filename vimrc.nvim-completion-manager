@@ -23,8 +23,8 @@ endif
 
 
 set background=dark
-"colorscheme solarized
-colorscheme lucario
+colorscheme solarized8_flat
+"colorscheme lucario
 "colorscheme nord
 "
 au BufEnter * if &filetype == "" | setlocal ft=conf | endif
@@ -33,8 +33,6 @@ au BufEnter * if &filetype == "" | setlocal ft=conf | endif
 " autocmd TabEnter * set visualbell t_vb=
 
 " some command-line mode bindings, use ,: to enter : in command-line
-cnoremap : w<space>!
-cnoremap ,: :
 let $BASH_ENV="~/.zshrc"
 
 " some leader bindings
@@ -58,11 +56,11 @@ nnoremap <leader>a :cclose<CR>
 " nnoremap <c-l> <c-i>
 
 " cross display
-au BufEnter * setlocal cursorline cursorcolumn
-au WinLeave * setlocal nocursorline nocursorcolumn
-hi Cursorline cterm=NONE ctermbg=235
-hi Cursorcolumn cterm=NONE ctermbg=235
-au FileType tagbar setlocal nocursorline nocursorcolumn
+"au BufEnter * setlocal cursorline cursorcolumn
+"au WinLeave * setlocal nocursorline nocursorcolumn
+"hi Cursorline cterm=NONE ctermbg=235
+"hi Cursorcolumn cterm=NONE ctermbg=235
+"au FileType tagbar setlocal nocursorline nocursorcolumn
 
 "status line
 "set laststatus=2
@@ -74,10 +72,10 @@ au FileType tagbar setlocal nocursorline nocursorcolumn
 
 " status line and vertical border
 set fillchars+=vert:\  "there must be a trailling blank at the end
-"hi User1 ctermfg=102 ctermbg=235
-hi VertSplit ctermfg=NONE ctermbg=NONE
-hi StatusLine ctermfg=NONE ctermbg=NONE
-hi StatusLineNC ctermfg=NONE ctermbg=NONE
+""hi User1 ctermfg=102 ctermbg=235
+"hi VertSplit ctermfg=NONE ctermbg=NONE
+"hi StatusLine ctermfg=NONE ctermbg=NONE
+"hi StatusLineNC ctermfg=NONE ctermbg=NONE
 
 " tab line
 "hi TabLineFill ctermfg=235
@@ -85,17 +83,17 @@ hi StatusLineNC ctermfg=NONE ctermbg=NONE
 "hi TabLineSel ctermfg=28
 
 " visual mode
-hi Visual ctermbg=166
-
-" pop-up menu
-hi Pmenu ctermbg=235 ctermfg=173
-hi PmenuSel ctermbg=237 ctermfg=173
-hi PmenuSbar ctermbg=235
-hi PmenuThumb ctermbg=237
-
-" change cursor color in different modes
-let &t_SI="\<Esc>]12;green\x7"
-let &t_EI="\<Esc>]12;purple\x7"
+"hi Visual ctermbg=166
+"
+"" pop-up menu
+"hi Pmenu ctermbg=235 ctermfg=173
+"hi PmenuSel ctermbg=237 ctermfg=173
+"hi PmenuSbar ctermbg=235
+"hi PmenuThumb ctermbg=237
+"
+"" change cursor color in different modes
+"let &t_SI="\<Esc>]12;green\x7"
+"let &t_EI="\<Esc>]12;purple\x7"
 
 " line number
 set relativenumber
@@ -190,6 +188,9 @@ endif
 
 " Make sure you use single quotes
 
+" colors
+Plug 'arcticicestudio/nord-vim'
+
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'jistr/vim-nerdtree-tabs'
@@ -206,7 +207,6 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'mbbill/undotree',             { 'on': 'UndotreeToggle'   }
 Plug 'mhinz/vim-signify'
-Plug 'arcticicestudio/nord-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'SirVer/ultisnips'
@@ -246,6 +246,8 @@ let g:NERDTrimTrailingWhitespace=1
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions=1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_function_arguments = 1
 let g:go_highlight_methods=1
 let g:go_highlight_structs=1
 let g:go_highlight_interfaces=1
@@ -263,6 +265,9 @@ let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck', 'deadcode', 'structc
 "let g:go_metalinter_deadline = "5s"
 let g:go_list_type = "quickfix"
 " let g:go_fmt_autosave=0
+if has('nvim')
+    let g:go_term_enabled = 1
+endif
 
 " auto-pairs
 let g:AutoPairsCenterLine=0
@@ -331,7 +336,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#ale#enabled = 1
 "let g:airline_solarized_bg='dark'
 let g:airline_powerline_fonts = 1
-let g:airline_theme='nord'
+let g:airline_solarized_bg='dark'
+let g:airline_theme='solarized'
 
 "==========================ale=================================================
 let g:ale_linters = {'go':['goimports','gotype','gosimple']}
@@ -373,11 +379,7 @@ let g:fzf_buffers_jump = 1
 
 " Default fzf layout
 " - down / up / left / right
-if has("nvim")
-    let g:fzf_layout = { 'down': '~40%' }
-else
-    let g:fzf_layout = {'window':'enew'} 
-endif
+let g:fzf_layout = { 'down': '~40%' }
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
       \ { 'fg':      ['fg', 'Normal'],
