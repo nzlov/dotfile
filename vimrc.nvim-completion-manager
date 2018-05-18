@@ -214,6 +214,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 "Plug 'bling/vim-bufferline'
 Plug 'w0rp/ale'
+Plug 'terryma/vim-multiple-cursors'
 
 Plug 'roxma/nvim-completion-manager'
 if !has('nvim')
