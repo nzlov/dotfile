@@ -119,7 +119,7 @@ set showmatch
 " search
 set incsearch
 set hlsearch
-nnoremap <leader>c :nohlsearch<cr>
+nnoremap <leader>s :nohlsearch<cr>
 " nnoremap <leader>cp :TagbarClose<cr>:set nonumber<cr>
 " nnoremap <leader>nm :TagbarOpen<cr>:set number<cr>
 set ignorecase
@@ -214,7 +214,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 "Plug 'bling/vim-bufferline'
 Plug 'w0rp/ale'
-Plug 'terryma/vim-multiple-cursors'
+"Plug 'terryma/vim-multiple-cursors'
 
 Plug 'roxma/nvim-completion-manager'
 if !has('nvim')
@@ -235,10 +235,26 @@ let NERDTreeWinPos=1
 map <leader>n <plug>NERDTreeTabsToggle<cr>
 
 " nerdcommenter
-let g:NERDSpaceDelims=1
-let g:NERDCommentEmptyLines=1
-let g:NERDTrimTrailingWhitespace=1
-" let g:NERDCompactSexyComs=1
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
 
 " emmet
 " let g:user_emmet_leader_key='<leader>t'
