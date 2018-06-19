@@ -16,8 +16,10 @@ if !exists("g:gui_oni")
   if $COLORTERM == 'truecolor'
       set termguicolors
   else
-      set term=xterm
-      set t_Co=256
+      if !has("nvim")
+          set term=xterm
+          set t_Co=256
+      endif
   endif
 endif
 
