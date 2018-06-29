@@ -15,8 +15,8 @@ set clipboard=unnamed
 set term=xterm-256color
 "set background=dark
 "colorscheme solarized
-"colorscheme lucario
-colorscheme nord
+colorscheme lucario
+"colorscheme nord
 au BufEnter * if &filetype == "" | setlocal ft=conf | endif
 
 " set noerrorbells visualbell t_vb=
