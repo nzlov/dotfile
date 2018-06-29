@@ -39,12 +39,12 @@ let $BASH_ENV="~/.zshrc"
 
 " some leader bindings
 let mapleader="\<Space>"
-nnoremap <leader>L gt
-nnoremap <leader>H gT
-nnoremap <leader>l :bnext<cr> 
-nnoremap <leader>h :bprevious<cr>
-nnoremap <leader>X :tabclose<cr>
-nnoremap <leader>x :bp <BAR> bd #<CR>
+nnoremap <leader>l gt
+nnoremap <leader>h gT
+nnoremap <leader>L :bnext<cr> 
+nnoremap <leader>H :bprevious<cr>
+nnoremap <leader>x :tabclose<cr>
+nnoremap <leader>X :bp <BAR> bd #<CR>
 nnoremap <leader>w :w<cr>
 " nnoremap <leader>q :tabfirst<cr>:tabonly<cr><c-z>
 nnoremap <leader>q :qa!<cr>
