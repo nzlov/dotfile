@@ -390,6 +390,7 @@ imap <c-g> <Plug>(cm_force_refresh)
 nnoremap <leader>p :FZF<cr>
 " This is the default extra key bindings
 let g:fzf_action = {
+      \ 'enter': 'tab split',
       \ 'ctrl-x': 'split',
       \ 'ctrl-v': 'vsplit' }
 
