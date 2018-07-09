@@ -24,10 +24,14 @@ if !exists("g:gui_oni")
 endif
 
 
-set background=dark
-colorscheme solarized8_flat
+set background=light
+"colorscheme solarized8_flat
 "colorscheme lucario
 "colorscheme nord
+"colorscheme onehalflight
+"colorscheme onehalfdark
+colorscheme PaperColor
+
 "
 au BufEnter * if &filetype == "" | setlocal ft=conf | endif
 
@@ -149,6 +153,11 @@ set scrolloff=3
 inoremap <c-c> <esc>
 vnoremap <c-c> <esc>
 
+inoremap <c-h> <Left>
+inoremap <c-j> <Down>
+inoremap <c-k> <Up>
+inoremap <c-l> <Right>
+
 " change bindings for moving between windows
 nnoremap J  <C-w>j
 nnoremap K  <C-w>k
@@ -192,6 +201,7 @@ endif
 
 " colors
 Plug 'arcticicestudio/nord-vim'
+Plug 'sonph/onehalf', {'rtp': 'vim'}
 
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -222,6 +232,8 @@ Plug 'roxma/nvim-completion-manager'
 if !has('nvim')
     Plug 'roxma/vim-hug-neovim-rpc'
 endif
+
+
 
 
 call plug#end()
@@ -356,7 +368,11 @@ let g:airline#extensions#ale#enabled = 1
 "let g:airline_solarized_bg='dark'
 let g:airline_powerline_fonts = 1
 let g:airline_solarized_bg='dark'
-let g:airline_theme='solarized'
+"let g:airline_theme='solarized'
+"let g:airline_theme='onehalflight'
+"let g:airline_theme='onehalfdark'
+let g:airline_theme='papercolor'
+
 
 "==========================ale=================================================
 let g:ale_linters = {'go':['goimports','gotype','gosimple']}
