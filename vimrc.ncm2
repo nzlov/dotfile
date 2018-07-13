@@ -228,10 +228,23 @@ Plug 'airblade/vim-gitgutter'
 Plug 'w0rp/ale'
 "Plug 'terryma/vim-multiple-cursors'
 
+Plug 'junegunn/goyo.vim'
+Plug 'mhinz/vim-startify'
+
 Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2-go'
+Plug 'ncm2/ncm2-match-highlight'
+Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-abbrfuzzy'
 Plug 'ncm2/ncm2-ultisnips'
 Plug 'ncm2/ncm2-bufword'
+Plug 'roxma/nvim-yarp'
+
+if !has('nvim')
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+
+
 
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
@@ -395,6 +408,21 @@ augroup CloseLoclistWindowGroup
 augroup END
 
 
+"==========================   Goyo  =================================================
+let g:goyo_width="55%"
+let g:goyo_height="100%"
+nnoremap <leader>g :Goyo<cr>
+
+function! s:goyo_enter()
+   set relativenumber
+   set number
+endfunction
+
+function! s:goyo_leave()
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 " =================================== ncm2  =================
 autocmd BufEnter * call ncm2#enable_for_buffer()
@@ -408,6 +436,12 @@ inoremap <c-c> <ESC>
 inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+let g:ncm2#matcher = 'abbrfuzzy'
+" use a sorter that's more friendly for fuzzy match
+let g:ncm2#sorter = 'abbrfuzzy'
+
+"let g:ncm2#match_highlight = 'bold'
 
 " =================================== LanguageClient =========================
 "
