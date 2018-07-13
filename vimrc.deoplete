@@ -228,13 +228,19 @@ Plug 'airblade/vim-gitgutter'
 Plug 'w0rp/ale'
 "Plug 'terryma/vim-multiple-cursors'
 
-Plug 'roxma/nvim-completion-manager'
-if !has('nvim')
-    Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'zchee/deoplete-go', { 'do': 'make'}
+
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
 Plug 'junegunn/goyo.vim'
 Plug 'mhinz/vim-startify'
+
 
 
 call plug#end()
@@ -390,7 +396,6 @@ endfunction
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
-
 "==========================ale=================================================
 let g:ale_linters = {'go':['goimports','gotype','gosimple']}
 "let g:ale_open_list=1
@@ -410,14 +415,14 @@ augroup END
 
 
 
-" =================================== NVIM-Completion-Manager  =================
-let g:cm_matcher = {'module': 'cm_matchers.fuzzy_matcher', 'case': 'smartcase'}
-inoremap <silent> <c-u> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
-imap <expr> <CR>  (pumvisible() ?  "\<c-y>\<Plug>(expand_or_nl)" : "\<CR>")
-imap <expr> <Plug>(expand_or_nl) (cm#completed_is_snippet() ? "\<C-U>":"\<CR>")
+" =================================== deoplete  =================
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#go#sort_class = ['package', 'type', 'var', 'func', 'const']
+set completeopt-=preview
+" Use smartcase.
+call deoplete#custom#option('smart_case', v:true)
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-imap <c-g> <Plug>(cm_force_refresh)
 
 " =================================== fzf ======================================
 nnoremap <leader>p :FZF<cr>

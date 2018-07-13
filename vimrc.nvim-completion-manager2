@@ -24,14 +24,10 @@ if !exists("g:gui_oni")
 endif
 
 
-set background=light
+set background=dark
 "colorscheme solarized8_flat
-"colorscheme lucario
+colorscheme lucario
 "colorscheme nord
-"colorscheme onehalflight
-"colorscheme onehalfdark
-colorscheme PaperColor
-
 "
 au BufEnter * if &filetype == "" | setlocal ft=conf | endif
 
@@ -153,11 +149,6 @@ set scrolloff=3
 inoremap <c-c> <esc>
 vnoremap <c-c> <esc>
 
-inoremap <c-h> <Left>
-inoremap <c-j> <Down>
-inoremap <c-k> <Up>
-inoremap <c-l> <Right>
-
 " change bindings for moving between windows
 nnoremap J  <C-w>j
 nnoremap K  <C-w>k
@@ -201,7 +192,6 @@ endif
 
 " colors
 Plug 'arcticicestudio/nord-vim'
-Plug 'sonph/onehalf', {'rtp': 'vim'}
 
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -228,13 +218,15 @@ Plug 'airblade/vim-gitgutter'
 Plug 'w0rp/ale'
 "Plug 'terryma/vim-multiple-cursors'
 
-Plug 'roxma/nvim-completion-manager'
-if !has('nvim')
-    Plug 'roxma/vim-hug-neovim-rpc'
-endif
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2-ultisnips'
+Plug 'ncm2/ncm2-bufword'
 
-Plug 'junegunn/goyo.vim'
-Plug 'mhinz/vim-startify'
+Plug 'roxma/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 
 
 call plug#end()
@@ -369,27 +361,7 @@ let g:airline#extensions#ale#enabled = 1
 "let g:airline_solarized_bg='dark'
 let g:airline_powerline_fonts = 1
 let g:airline_solarized_bg='dark'
-"let g:airline_theme='solarized'
-"let g:airline_theme='onehalflight'
-"let g:airline_theme='onehalfdark'
-let g:airline_theme='papercolor'
-
-"==========================   Goyo  =================================================
-let g:goyo_width="55%"
-let g:goyo_height="100%"
-nnoremap <leader>g :Goyo<cr>
-
-function! s:goyo_enter()
-   set relativenumber
-   set number
-endfunction
-
-function! s:goyo_leave()
-endfunction
-
-autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
-
+let g:airline_theme='solarized'
 
 "==========================ale=================================================
 let g:ale_linters = {'go':['goimports','gotype','gosimple']}
@@ -410,14 +382,44 @@ augroup END
 
 
 
-" =================================== NVIM-Completion-Manager  =================
-let g:cm_matcher = {'module': 'cm_matchers.fuzzy_matcher', 'case': 'smartcase'}
-inoremap <silent> <c-u> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
-imap <expr> <CR>  (pumvisible() ?  "\<c-y>\<Plug>(expand_or_nl)" : "\<CR>")
-imap <expr> <Plug>(expand_or_nl) (cm#completed_is_snippet() ? "\<C-U>":"\<CR>")
+" =================================== ncm2  =================
+autocmd BufEnter * call ncm2#enable_for_buffer()
+set completeopt=noinsert,menuone,noselect
+set shortmess+=c
+
+au TextChangedI * call ncm2#auto_trigger()
+
+inoremap <c-c> <ESC>
+
+inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-imap <c-g> <Plug>(cm_force_refresh)
+
+" ================================== LanguageClient =========================
+let g:LanguageClient_serverCommands = {
+\ 'go': ['go-langserver'],
+\ }
+let g:LanguageClient_loggingFile = '/tmp/lc.log'
+let g:LanguageClient_loggingLevel = 'DEBUG'
+
+" a json file with settings for go-langserver:
+" {
+" 	"initializationOptions": {
+" 		"gocodeCompletionEnabled": true,
+" 		"funcSnippetEnabled": true
+" 	}
+" }
+let g:LanguageClient_settingsPath = $WORKSPACE_DIR . '/.vim/settings.json'
+
+"==================================== ncm2 ultisnips =========================
+inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
+
+" c-j c-k for moving in snippet
+imap <c-u> <Plug>(ultisnips_expand)
+let g:UltiSnipsExpandTrigger		= "<Plug>(ultisnips_expand)"
+let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
+let g:UltiSnipsRemoveSelectModeMappings = 0
 
 " =================================== fzf ======================================
 nnoremap <leader>p :FZF<cr>
