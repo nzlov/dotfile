@@ -24,10 +24,11 @@ if !exists("g:gui_oni")
 endif
 
 let hour = strftime("%H")
-if hour < 18
-    set background=light
-else
-    set background=dark
+set background=dark
+if hour < 19
+    if hour > 6
+        set background=light
+    endif
 endif
 "colorscheme solarized8_flat
 "colorscheme lucario
