@@ -240,7 +240,9 @@ Plug 'ncm2/ncm2'
 Plug 'ncm2/ncm2-go'
 Plug 'ncm2/ncm2-match-highlight'
 Plug 'ncm2/ncm2-path'
-Plug 'ncm2/ncm2-abbrfuzzy'
+Plug 'ncm2/ncm2-jedi'
+Plug 'ncm2/ncm2-neoinclude'
+Plug 'Shougo/neoinclude.vim'
 Plug 'ncm2/ncm2-ultisnips'
 Plug 'ncm2/ncm2-bufword'
 Plug 'roxma/nvim-yarp'
@@ -442,19 +444,15 @@ inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-let g:ncm2#matcher = 'abbrfuzzy'
-" use a sorter that's more friendly for fuzzy match
-let g:ncm2#sorter = 'abbrfuzzy'
-
-"let g:ncm2#match_highlight = 'bold'
 
 " =================================== LanguageClient =========================
-"
 let g:LanguageClient_serverCommands = {
-\ 'go': ['go-langserver'],
+\ 'go': [$GOPATH . '/bin/go-langserver', '-gocodecompletion'],
 \ }
+
 let g:LanguageClient_loggingFile = '/tmp/lc.log'
 let g:LanguageClient_loggingLevel = 'DEBUG'
+
 
 " a json file with settings for go-langserver:
 " {
