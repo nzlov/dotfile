@@ -227,8 +227,9 @@ Plug 'airblade/vim-gitgutter'
 "Plug 'bling/vim-bufferline'
 Plug 'w0rp/ale'
 "Plug 'terryma/vim-multiple-cursors'
+Plug 'junegunn/goyo.vim'
+Plug 'mhinz/vim-startify'
 
-Plug 'zchee/deoplete-go', { 'do': 'make'}
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -238,9 +239,8 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
-Plug 'junegunn/goyo.vim'
-Plug 'mhinz/vim-startify'
 
+Plug 'zchee/deoplete-go', { 'do': 'make'}
 
 
 call plug#end()
@@ -419,10 +419,15 @@ augroup END
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#go#sort_class = ['package', 'type', 'var', 'func', 'const']
 set completeopt-=preview
+set completeopt+=noinsert
+set completeopt+=noselect
 " Use smartcase.
 call deoplete#custom#option('smart_case', v:true)
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+"let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+"let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 
 " =================================== fzf ======================================
 nnoremap <leader>p :FZF<cr>
