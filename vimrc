@@ -1,1 +1,1 @@
-vimrc.deoplete
+vimrc.ncm2
