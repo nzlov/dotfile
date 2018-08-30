@@ -207,7 +207,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'scrooloose/nerdcommenter'
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go' , { 'do': ':GoUpdateBinaries' }
 Plug 'majutsushi/tagbar'
 "Plug 'valloric/youcompleteme'
 "Plug 'mileszs/ack.vim'
@@ -221,7 +221,7 @@ Plug 'mbbill/undotree',             { 'on': 'UndotreeToggle'   }
 Plug 'mhinz/vim-signify'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'SirVer/ultisnips'
+"Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 "Plug 'bling/vim-bufferline'
@@ -238,6 +238,9 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
+
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
 
 
 Plug 'zchee/deoplete-go', { 'do': 'make'}
@@ -354,17 +357,6 @@ let g:tagbar_type_javascript = {
       \ },
       \}
 
-" ycm
-"set completeopt -=preview
-"set completeopt=longest,menu
-"let g:ycm_collect_identifiers_from_comments_and_strings=1
-"let g:ycm_goto_buffer_command='new-or-existing-tab'
-
-" ultisnips
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-"let g:UltiSnipsExpandTrigger="<c-l>"
-let g:UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
-
 " ag
 let g:ag_working_path_mode='r'
 
@@ -428,6 +420,28 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 "let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 "let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+"
+
+" =================================== neosnippet ============================
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
 
 " =================================== fzf ======================================
 nnoremap <leader>p :FZF<cr>
