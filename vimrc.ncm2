@@ -36,6 +36,7 @@ endif
 "colorscheme onehalflight
 "colorscheme onehalfdark
 colorscheme PaperColor
+"colorscheme gruvbox
 
 "
 au BufEnter * if &filetype == "" | setlocal ft=conf | endif
@@ -207,6 +208,7 @@ endif
 " colors
 Plug 'arcticicestudio/nord-vim'
 Plug 'sonph/onehalf', {'rtp': 'vim'}
+Plug 'morhetz/gruvbox'
 
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -237,6 +239,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'mhinz/vim-startify'
 
 Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2-go'
 Plug 'ncm2/ncm2-match-highlight'
 Plug 'ncm2/ncm2-path'
@@ -245,7 +248,8 @@ Plug 'ncm2/ncm2-neoinclude'
 Plug 'Shougo/neoinclude.vim'
 Plug 'ncm2/ncm2-ultisnips'
 Plug 'ncm2/ncm2-bufword'
-Plug 'roxma/nvim-yarp'
+Plug 'honza/vim-snippets'
+
 
 if !has('nvim')
   Plug 'roxma/vim-hug-neovim-rpc'
@@ -467,8 +471,11 @@ let g:LanguageClient_loggingLevel = 'DEBUG'
 "==================================== ultisnips ===========================
 " c-j c-k for moving in snippet
 
-inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
-imap <c-u> <Plug>(ultisnips_expand)
+inoremap <silent> <expr> <CR> ((pumvisible() && empty(v:completed_item)) ?  "\<c-y>\<cr>" : (!empty(v:completed_item) ? ncm2_ultisnips#expand_or("", 'n') : "\<CR>" ))
+
+" c-j c-k for moving in snippet
+imap <expr> <c-u> ncm2_ultisnips#expand_or("\<Plug>(ultisnips_expand)", 'm')
+smap <c-u> <Plug>(ultisnips_expand)
 let g:UltiSnipsExpandTrigger		= "<Plug>(ultisnips_expand)"
 let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
