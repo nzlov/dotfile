@@ -25,17 +25,19 @@ endif
 
 let hour = strftime("%H")
 set background=dark
-if hour < 19
+if hour < 16
     if hour > 6
         set background=light
     endif
 endif
-"colorscheme solarized8_flat
+
+"colorscheme solarized8
+colorscheme solarized8_flat
 "colorscheme lucario
 "colorscheme nord
 "colorscheme onehalflight
 "colorscheme onehalfdark
-colorscheme PaperColor
+"colorscheme PaperColor
 "colorscheme gruvbox
 
 "
@@ -442,8 +444,6 @@ set shortmess+=c
 
 au TextChangedI * call ncm2#auto_trigger()
 
-inoremap <c-c> <ESC>
-
 inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -471,7 +471,7 @@ let g:LanguageClient_loggingLevel = 'DEBUG'
 "==================================== ultisnips ===========================
 " c-j c-k for moving in snippet
 
-inoremap <silent> <expr> <CR> ((pumvisible() && empty(v:completed_item)) ?  "\<c-y>\<cr>" : (!empty(v:completed_item) ? ncm2_ultisnips#expand_or("", 'n') : "\<CR>" ))
+"inoremap <silent> <expr> <CR> ((pumvisible() && empty(v:completed_item)) ?  "\<c-y>\<cr>" : (!empty(v:completed_item) ? ncm2_ultisnips#expand_or("", 'n') : "\<CR>" ))
 
 " c-j c-k for moving in snippet
 imap <expr> <c-u> ncm2_ultisnips#expand_or("\<Plug>(ultisnips_expand)", 'm')

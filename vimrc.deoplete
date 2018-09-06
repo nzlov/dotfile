@@ -25,12 +25,12 @@ endif
 
 
 set background=light
-"colorscheme solarized8_flat
+colorscheme solarized8_flat
 "colorscheme lucario
 "colorscheme nord
 "colorscheme onehalflight
 "colorscheme onehalfdark
-colorscheme PaperColor
+"colorscheme PaperColor
 
 "
 au BufEnter * if &filetype == "" | setlocal ft=conf | endif
