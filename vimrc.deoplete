@@ -414,7 +414,7 @@ set completeopt-=preview
 set completeopt+=noinsert
 set completeopt+=noselect
 " Use smartcase.
-call deoplete#custom#option('smart_case', v:true)
+call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
