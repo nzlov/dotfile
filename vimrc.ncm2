@@ -11,34 +11,7 @@ set nobackup
 set noswapfile
 set clipboard=unnamed
 set autowrite
-
-if !exists("g:gui_oni")
-  if $COLORTERM == 'truecolor'
-      set termguicolors
-  else
-      if !has("nvim")
-          set term=xterm
-          set t_Co=256
-      endif
-  endif
-endif
-
-let hour = strftime("%H")
-set background=dark
-if hour < 16
-    if hour > 6
-        set background=light
-    endif
-endif
-
-"colorscheme solarized8
-colorscheme solarized8_flat
-"colorscheme lucario
-"colorscheme nord
-"colorscheme onehalflight
-"colorscheme onehalfdark
-"colorscheme PaperColor
-"colorscheme gruvbox
+set lazyredraw
 
 "
 au BufEnter * if &filetype == "" | setlocal ft=conf | endif
@@ -47,7 +20,7 @@ au BufEnter * if &filetype == "" | setlocal ft=conf | endif
 " autocmd TabEnter * set visualbell t_vb=
 
 " some command-line mode bindings, use ,: to enter : in command-line
-let $BASH_ENV="~/.zshrc"
+let $BASH_ENV="$HOME/.zshrc"
 
 " some leader bindings
 let mapleader="\<Space>"
@@ -193,7 +166,7 @@ nnoremap L  <C-w>l
 " inoremap <esc> <nop>
 " vnoremap <esc> <nop>
 
-" =============================== Vundle ====================================
+" =============================== Plugin ====================================
 
 filetype off
 " Specify a directory for plugins
@@ -208,8 +181,8 @@ endif
 " Make sure you use single quotes
 
 " colors
-Plug 'arcticicestudio/nord-vim'
-Plug 'sonph/onehalf', {'rtp': 'vim'}
+"Plug 'arcticicestudio/nord-vim'
+"Plug 'sonph/onehalf', {'rtp': 'vim'}
 Plug 'morhetz/gruvbox'
 
 Plug 'scrooloose/nerdtree'
@@ -236,6 +209,7 @@ Plug 'airblade/vim-gitgutter'
 "Plug 'bling/vim-bufferline'
 Plug 'w0rp/ale'
 "Plug 'terryma/vim-multiple-cursors'
+Plug 'easymotion/vim-easymotion'
 
 Plug 'junegunn/goyo.vim'
 Plug 'mhinz/vim-startify'
@@ -267,6 +241,37 @@ endif
 
 call plug#end()
 filetype on
+
+" =============================== Colors ====================================
+if !exists("g:gui_oni")
+  if $COLORTERM == 'truecolor'
+      set termguicolors
+  else
+      if !has("nvim")
+          set term=xterm
+          set t_Co=256
+      endif
+  endif
+endif
+
+let hour = strftime("%H")
+set background=dark
+if hour < 16
+    if hour > 6
+        set background=light
+    endif
+endif
+
+"colorscheme solarized8
+colorscheme solarized8_flat
+"colorscheme lucario
+"colorscheme nord
+"colorscheme onehalflight
+"colorscheme onehalfdark
+"colorscheme PaperColor
+"colorscheme gruvbox
+
+
 
 " =============================== Plugin ====================================
 
@@ -303,16 +308,16 @@ let g:NERDTrimTrailingWhitespace = 1
 " let g:user_emmet_leader_key='<leader>t'
 
 " vim-go
-let g:go_highlight_types = 1
+"let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
-let g:go_highlight_functions=1
+"let g:go_highlight_functions=1
 let g:go_highlight_function_calls = 1
-let g:go_highlight_function_arguments = 1
-let g:go_highlight_methods=1
+"let g:go_highlight_function_arguments = 1
+"let g:go_highlight_methods=1
 let g:go_highlight_structs=1
 let g:go_highlight_interfaces=1
-let g:go_highlight_operators=1
-let g:go_highlight_build_constrants=1
+"let g:go_highlight_operators=1
+"let g:go_highlight_build_constrants=1
 let g:go_highlight_extra_types = 1
 let g:go_auto_sameids = 1
 let g:go_gocode_unimported_packages=1
@@ -396,11 +401,11 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#ale#enabled = 1
 "let g:airline_solarized_bg='dark'
 let g:airline_powerline_fonts = 1
-let g:airline_solarized_bg='dark'
-"let g:airline_theme='solarized'
+"let g:airline_solarized_bg='light'
+let g:airline_theme='solarized'
 "let g:airline_theme='onehalflight'
 "let g:airline_theme='onehalfdark'
-let g:airline_theme='papercolor'
+"let g:airline_theme='papercolor'
 
 
 "==========================ale=================================================
@@ -420,6 +425,21 @@ augroup CloseLoclistWindowGroup
    autocmd QuitPre * if empty(&buftype) | lclose | endif
 augroup END
 
+"==========================   vim-easymotion   ==================================
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 "==========================   Goyo  =================================================
 let g:goyo_width="55%"
@@ -441,8 +461,6 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=noinsert,menuone,noselect
 set shortmess+=c
-
-au TextChangedI * call ncm2#auto_trigger()
 
 inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
