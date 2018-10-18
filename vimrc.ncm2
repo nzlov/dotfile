@@ -109,8 +109,8 @@ set hlsearch
 nnoremap <leader>s :nohlsearch<cr>
 " nnoremap <leader>cp :TagbarClose<cr>:set nonumber<cr>
 " nnoremap <leader>nm :TagbarOpen<cr>:set number<cr>
-set ignorecase
-set smartcase
+"set ignorecase
+"set smartcase
 set isk+=-
 
 " wrap
