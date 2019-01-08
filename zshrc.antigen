@@ -13,6 +13,7 @@ go
 sudo
 wd
 docker
+history
 
 # github repos 
 zsh-users/zsh-syntax-highlighting
