@@ -30,6 +30,11 @@ antigen theme geometryl
 antigen apply
 
 
+# History
+SAVEHIST=999
+HISTFILE=~/.zsh_history
+
+
 # Alias
 alias v="nvim"
 alias gogu="go get -u -v "
