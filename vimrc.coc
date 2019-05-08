@@ -12,6 +12,10 @@ set noswapfile
 set clipboard=unnamed
 set autowrite
 set lazyredraw
+set updatetime=300
+set signcolumn=auto:2
+
+
 
 "
 au BufEnter * if &filetype == "" | setlocal ft=conf | endif
@@ -207,7 +211,7 @@ Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 "Plug 'bling/vim-bufferline'
-Plug 'w0rp/ale'
+"Plug 'w0rp/ale'
 "Plug 'terryma/vim-multiple-cursors'
 Plug 'easymotion/vim-easymotion'
 
@@ -384,24 +388,6 @@ let g:airline_theme='solarized'
 "let g:airline_theme='onehalfdark'
 "let g:airline_theme='papercolor'
 
-
-"==========================ale=================================================
-let g:ale_linters = {'go':['goimports','gosimple','golangserver']}
-"let g:ale_open_list=1
-let g:ale_fix_on_save = 1
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_set_quickfix=0
-let g:ale_sign_column_always = 1
-"自定义error和warning图标
-let g:ale_sign_error = '✗'
-let g:ale_sign_warning = '⚡'
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
-augroup CloseLoclistWindowGroup
-   autocmd!
-   autocmd QuitPre * if empty(&buftype) | lclose | endif
-augroup END
-
 "==========================   vim-easymotion   ==================================
 " <Leader>f{char} to move to {char}
 map  <Leader>f <Plug>(easymotion-bd-f)
@@ -437,6 +423,7 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 "==========================   Goyo  =================================================
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
@@ -447,6 +434,22 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
