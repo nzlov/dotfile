@@ -52,3 +52,5 @@ export GOROOT_BOOTSTRAP=$HOME/program/go1.4
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
 source ~/.zshrc.local
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
