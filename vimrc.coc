@@ -193,8 +193,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'scrooloose/nerdcommenter'
-Plug 'fatih/vim-go'
-Plug 'majutsushi/tagbar'
+"Plug 'fatih/vim-go'
+"Plug 'majutsushi/tagbar'
 "Plug 'valloric/youcompleteme'
 "Plug 'mileszs/ack.vim'
 "Plug 'rking/ag.vim'
@@ -209,7 +209,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
+"Plug 'airblade/vim-gitgutter'
 "Plug 'bling/vim-bufferline'
 "Plug 'w0rp/ale'
 "Plug 'terryma/vim-multiple-cursors'
@@ -288,33 +288,6 @@ let g:NERDTrimTrailingWhitespace = 1
 " emmet
 " let g:user_emmet_leader_key='<leader>t'
 
-" vim-go
-"let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-"let g:go_highlight_functions=1
-let g:go_highlight_function_calls = 1
-"let g:go_highlight_function_arguments = 1
-"let g:go_highlight_methods=1
-let g:go_highlight_structs=1
-let g:go_highlight_interfaces=1
-"let g:go_highlight_operators=1
-"let g:go_highlight_build_constrants=1
-let g:go_highlight_extra_types = 1
-let g:go_auto_sameids = 1
-let g:go_gocode_unimported_packages=1
-let g:go_fmt_command='goimports'
-let g:go_auto_type_info = 1
-"let g:go_metalinter_enabled = ['golint']
-let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck', 'deadcode', 'structcheck', 'maligned', 'megacheck', 'dupl', 'interfacer']
-let g:go_metalinter_autosave_enabled = ['vet','errcheck']
-"let g:go_metalinter_autosave = 1
-let g:go_metalinter_deadline = "5s"
-let g:go_list_type = "quickfix"
-" let g:go_fmt_autosave=0
-if has('nvim')
-    let g:go_term_enabled = 1
-endif
-
 " auto-pairs
 let g:AutoPairsCenterLine=0
 
@@ -322,45 +295,6 @@ let g:AutoPairsCenterLine=0
 " let g:formatters_go = ['goimports']
 " let g:autoformat_verbosemode=1
 " au BufWrite *.go :Autoformat
-
-" tagbar
-let g:tagbar_left=1
-let g:tagbar_width=50
-let g:tagbar_iconchars=['▸', '▾']
-"let g:tagbar_autopreview = 1
-" au FileType go nested :TagbarOpen
-let g:tagbar_type_rust = {
-      \ 'ctagstype' : 'rust',
-      \ 'kinds' : [
-      \'T:type',
-      \'f:function',
-      \'g:enum',
-      \'s:struct',
-      \'m:module',
-      \'c:const',
-      \'t:trait',
-      \'i:impl',
-      \]
-      \}
-let g:tagbar_type_javascript = {
-      \ 'ctagstype' : 'javascript',
-      \ 'kinds' : [
-      \'a:const',
-      \'b:let',
-      \'d:var',
-      \'e:function',
-      \'h:class',
-      \],
-      \ 'sro' : '.',
-      \ 'kind2scope' : {
-      \ 't' : 'ctype',
-      \ 'n' : 'ntype'
-      \ },
-      \ 'scope2kind' : {
-      \ 'ctype' : 't',
-      \ 'ntype' : 'n'
-      \ },
-      \}
 
 " ycm
 "set completeopt -=preview
@@ -420,7 +354,7 @@ endfunction
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
-"==========================   Goyo  =================================================
+"==========================   Coc  =================================================
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 
@@ -463,7 +397,7 @@ nmap <silent> [c <Plug>(coc-diagnostic-prev)
 nmap <silent> ]c <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> <C-]> <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
@@ -600,18 +534,6 @@ nnoremap U :UndotreeToggle<CR>
 
 " ============================ Language Specific ==============================
 
-" go
-augroup go
-  autocmd!
-  au FileType go nnoremap <leader>r :w !go run %<cr>
-  au FileType go nnoremap <leader>gr :GoReferrers<cr>
-  au FileType go nnoremap <leader>b :GoBuild<cr>
-  au FileType go nnoremap <leader>m :GoMetaLinter <cr>
-  au VimResized * call ResizeTagbar()
-  au BufRead *.go nested call ResizeTagbar()
-"  au InsertLeave *.go nested :GoBuild!<cr>
-augroup END
-
 " sh
 augroup sh
   autocmd!
@@ -635,29 +557,14 @@ augroup c
   autocmd!
   au BufRead *.c nnoremap <leader>r :w !gcc % -o /tmp/c-compiled-random-string && /tmp/c-compiled-random-string<cr>
   au BufRead *.c setlocal expandtab
-  au VimResized * call ResizeTagbar()
 augroup END
 
 " python
 augroup python
   autocmd!
   au FileType python setlocal expandtab
-  au VimResized * call ResizeTagbar()
   au FileType python setlocal ts=4 sw=4 sts=4
 augroup END
-
-" ===============================  tagbar  ====================================
-" resize tagbar according to main window's size
-function ResizeTagbar()
-  " debug
- "  echom winwidth(0).":".winwidth(1)
-  if winwidth(0) < 150
-    execute "TagbarClose"
-  else
-    execute "TagbarOpen"
-  endif
-endfunction
-
 " ===============================    fmt   ====================================
 function Format(arg)
 

@@ -21,6 +21,8 @@ geometry-zsh/geometry
 djui/alias-tips
 zsh-users/zsh-autosuggestions
 ytet5uy4/fzf-widgets
+zdharma/fast-syntax-highlighting
+zdharma/history-search-multi-word
 EOBUNDLES
 
 # Load the theme.
