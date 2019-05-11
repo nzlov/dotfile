@@ -14,6 +14,7 @@ set autowrite
 set lazyredraw
 set updatetime=300
 set signcolumn=auto:2
+set hidden
 
 
 
@@ -604,6 +605,7 @@ augroup go
   autocmd!
   au VimResized * call ResizeTagbar()
   au BufRead *.go nested call ResizeTagbar()
+  au BufWritePre *.go call Format("go")
 "  au InsertLeave *.go nested :GoBuild!<cr>
 augroup END
 
