@@ -1,5 +1,6 @@
 {
-    "diagnostic.checkCurrentLine": false,
+    "codeLens.enable": true,
+    "diagnostic.checkCurrentLine": true,
     "coc.preferences.jumpCommand": "edit",
     "diagnostic.messageTarget": "float",
     "signature.target": "float",
