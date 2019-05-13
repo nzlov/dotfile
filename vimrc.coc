@@ -11,26 +11,12 @@ set nobackup
 set noswapfile
 set clipboard=unnamed
 set autowrite
-
-if !exists("g:gui_oni")
-  if $COLORTERM == 'truecolor'
-      set termguicolors
-  else
-      if !has("nvim")
-          set term=xterm
-          set t_Co=256
-      endif
-  endif
-endif
+set lazyredraw
+set updatetime=300
+set signcolumn=auto:2
+set hidden
 
 
-set background=light
-"colorscheme solarized8_flat
-"colorscheme lucario
-"colorscheme nord
-"colorscheme onehalflight
-"colorscheme onehalfdark
-colorscheme PaperColor
 
 "
 au BufEnter * if &filetype == "" | setlocal ft=conf | endif
@@ -39,7 +25,7 @@ au BufEnter * if &filetype == "" | setlocal ft=conf | endif
 " autocmd TabEnter * set visualbell t_vb=
 
 " some command-line mode bindings, use ,: to enter : in command-line
-let $BASH_ENV="~/.zshrc"
+let $BASH_ENV="$HOME/.zshrc"
 
 " some leader bindings
 let mapleader="\<Space>"
@@ -128,8 +114,8 @@ set hlsearch
 nnoremap <leader>s :nohlsearch<cr>
 " nnoremap <leader>cp :TagbarClose<cr>:set nonumber<cr>
 " nnoremap <leader>nm :TagbarOpen<cr>:set number<cr>
-set ignorecase
-set smartcase
+"set ignorecase
+"set smartcase
 set isk+=-
 
 " wrap
@@ -185,7 +171,7 @@ nnoremap L  <C-w>l
 " inoremap <esc> <nop>
 " vnoremap <esc> <nop>
 
-" =============================== Vundle ====================================
+" =============================== Plugin ====================================
 
 filetype off
 " Specify a directory for plugins
@@ -200,14 +186,15 @@ endif
 " Make sure you use single quotes
 
 " colors
-Plug 'arcticicestudio/nord-vim'
-Plug 'sonph/onehalf', {'rtp': 'vim'}
+"Plug 'arcticicestudio/nord-vim'
+"Plug 'sonph/onehalf', {'rtp': 'vim'}
+Plug 'morhetz/gruvbox'
 
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'scrooloose/nerdcommenter'
-Plug 'fatih/vim-go'
+"Plug 'fatih/vim-go'
 Plug 'majutsushi/tagbar'
 "Plug 'valloric/youcompleteme'
 "Plug 'mileszs/ack.vim'
@@ -219,26 +206,55 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'mbbill/undotree',             { 'on': 'UndotreeToggle'   }
 Plug 'mhinz/vim-signify'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
+"Plug 'airblade/vim-gitgutter'
 "Plug 'bling/vim-bufferline'
-Plug 'w0rp/ale'
+"Plug 'w0rp/ale'
 "Plug 'terryma/vim-multiple-cursors'
-
-Plug 'roxma/nvim-completion-manager'
-if !has('nvim')
-    Plug 'roxma/vim-hug-neovim-rpc'
-endif
+Plug 'easymotion/vim-easymotion'
 
 Plug 'junegunn/goyo.vim'
 Plug 'mhinz/vim-startify'
 
+Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
 
 call plug#end()
 filetype on
+
+" =============================== Colors ====================================
+if !exists("g:gui_oni")
+  if $COLORTERM == 'truecolor'
+      set termguicolors
+  else
+      if !has("nvim")
+          set term=xterm
+          set t_Co=256
+      endif
+  endif
+endif
+
+let hour = strftime("%H")
+set background=dark
+if hour < 16
+    if hour > 6
+        set background=light
+    endif
+endif
+
+"colorscheme solarized8
+"colorscheme solarized8_flat
+"colorscheme lucario
+"colorscheme nord
+"colorscheme onehalflight
+"colorscheme onehalfdark
+"colorscheme PaperColor
+colorscheme gruvbox
+
+
 
 " =============================== Plugin ====================================
 
@@ -274,32 +290,34 @@ let g:NERDTrimTrailingWhitespace = 1
 " emmet
 " let g:user_emmet_leader_key='<leader>t'
 
-" vim-go
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions=1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_function_arguments = 1
-let g:go_highlight_methods=1
-let g:go_highlight_structs=1
-let g:go_highlight_interfaces=1
-let g:go_highlight_operators=1
-let g:go_highlight_build_constrants=1
-let g:go_highlight_extra_types = 1
-let g:go_auto_sameids = 1
-let g:go_gocode_unimported_packages=1
-let g:go_fmt_command='goimports'
-let g:go_auto_type_info = 1
-"let g:go_metalinter_enabled = ['golint']
-let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck', 'deadcode', 'structcheck', 'maligned', 'megacheck', 'dupl', 'interfacer', 'goconst']
-"let g:go_metalinter_autosave_enabled = ['gotype']
-"let g:go_metalinter_autosave = 1
+
+"" vim-go
+""let g:go_highlight_types = 1
+"let g:go_highlight_fields = 1
+""let g:go_highlight_functions=1
+"let g:go_highlight_function_calls = 1
+""let g:go_highlight_function_arguments = 1
+""let g:go_highlight_methods=1
+"let g:go_highlight_structs=1
+"let g:go_highlight_interfaces=1
+""let g:go_highlight_operators=1
+""let g:go_highlight_build_constrants=1
+"let g:go_highlight_extra_types = 1
+"let g:go_auto_sameids = 1
+"let g:go_gocode_unimported_packages=1
+"let g:go_fmt_command='goimports'
+"let g:go_auto_type_info = 1
+""let g:go_metalinter_enabled = ['golint']
+"let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck', 'deadcode', 'structcheck', 'maligned', 'megacheck', 'dupl', 'interfacer']
+"let g:go_metalinter_autosave_enabled = ['vet','errcheck']
+""let g:go_metalinter_autosave = 1
 "let g:go_metalinter_deadline = "5s"
-let g:go_list_type = "quickfix"
-" let g:go_fmt_autosave=0
-if has('nvim')
-    let g:go_term_enabled = 1
-endif
+"let g:go_list_type = "quickfix"
+"" let g:go_fmt_autosave=0
+"if has('nvim')
+"    let g:go_term_enabled = 1
+"endif
+
 
 " auto-pairs
 let g:AutoPairsCenterLine=0
@@ -309,44 +327,40 @@ let g:AutoPairsCenterLine=0
 " let g:autoformat_verbosemode=1
 " au BufWrite *.go :Autoformat
 
+
 " tagbar
 let g:tagbar_left=1
 let g:tagbar_width=50
 let g:tagbar_iconchars=['▸', '▾']
 "let g:tagbar_autopreview = 1
 " au FileType go nested :TagbarOpen
-let g:tagbar_type_rust = {
-      \ 'ctagstype' : 'rust',
-      \ 'kinds' : [
-      \'T:type',
-      \'f:function',
-      \'g:enum',
-      \'s:struct',
-      \'m:module',
-      \'c:const',
-      \'t:trait',
-      \'i:impl',
-      \]
-      \}
-let g:tagbar_type_javascript = {
-      \ 'ctagstype' : 'javascript',
-      \ 'kinds' : [
-      \'a:const',
-      \'b:let',
-      \'d:var',
-      \'e:function',
-      \'h:class',
-      \],
-      \ 'sro' : '.',
-      \ 'kind2scope' : {
-      \ 't' : 'ctype',
-      \ 'n' : 'ntype'
-      \ },
-      \ 'scope2kind' : {
-      \ 'ctype' : 't',
-      \ 'ntype' : 'n'
-      \ },
-      \}
+let g:tagbar_type_go = {
+	\ 'ctagstype' : 'go',
+	\ 'kinds'     : [
+		\ 'p:package',
+		\ 'i:imports:1',
+		\ 'c:constants',
+		\ 'v:variables',
+		\ 't:types',
+		\ 'n:interfaces',
+		\ 'w:fields',
+		\ 'e:embedded',
+		\ 'm:methods',
+		\ 'r:constructor',
+		\ 'f:functions'
+	\ ],
+	\ 'sro' : '.',
+	\ 'kind2scope' : {
+		\ 't' : 'ctype',
+		\ 'n' : 'ntype'
+	\ },
+	\ 'scope2kind' : {
+		\ 'ctype' : 't',
+		\ 'ntype' : 'n'
+	\ },
+	\ 'ctagsbin'  : 'gotags',
+	\ 'ctagsargs' : '-sort -silent'
+    \ }
 
 " ycm
 "set completeopt -=preview
@@ -362,17 +376,90 @@ let g:UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
 " ag
 let g:ag_working_path_mode='r'
 
-" airline
+"" airline
 "let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#ale#enabled = 1
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#ale#enabled = 1
 "let g:airline_solarized_bg='dark'
-let g:airline_powerline_fonts = 1
-let g:airline_solarized_bg='dark'
+"let g:airline_powerline_fonts = 1
+"let g:airline_solarized_bg='light'
 "let g:airline_theme='solarized'
 "let g:airline_theme='onehalflight'
 "let g:airline_theme='onehalfdark'
-let g:airline_theme='papercolor'
+"let g:airline_theme='papercolor'
+
+
+"==========================   lightline   ==================================
+function! CocCurrentFunction()
+    return get(b:, 'coc_current_function', '')
+endfunction
+
+let g:lightline = {
+      \ 'colorscheme': 'gruvbox',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'cocstatus', 'currentfunction',  'filename' ]],
+      \   'right': [[ 'syntastic', 'lineinfo' ], ['percent'], [ 'fugitive','fileformat', 'fileencoding', 'filetype' ]]
+      \ },
+      \ 'component_function': {
+      \   'cocstatus': 'coc#status',
+      \   'currentfunction': 'CocCurrentFunction',
+      \   'fugitive': 'LightlineFugitive',
+      \   'filename': 'LightlineFilename',
+      \   'fileformat': 'LightlineFileformat',
+	  \   'filetype': 'LightlineFiletype',
+	  \   'fileencoding': 'LightlineFileencoding',
+      \ },
+      \ }
+
+
+function! LightlineModified()
+    return &ft =~ 'help\|vimfiler' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+function! LightlineReadonly()
+    return &ft !~? 'help\|vimfiler' && &readonly ? 'RO' : ''
+endfunction
+function! LightlineFilename()
+    return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
+		\ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+		\  &ft == 'unite' ? unite#get_status_string() :
+		\  &ft == 'vimshell' ? vimshell#get_status_string() :
+		\ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+		\ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
+endfunction
+function! LightlineFugitive()
+    if &ft !~? 'vimfiler' && exists('*fugitive#head')
+        return fugitive#head()
+	endif
+	return ''
+endfunction
+
+function! LightlineFileformat()
+    return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! LightlineFiletype()
+    return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+endfunction
+
+function! LightlineFileencoding()
+	return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
+endfunction
+"==========================   vim-easymotion   ==================================
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  <Leader>W <Plug>(easymotion-bd-w)
+nmap <Leader>W <Plug>(easymotion-overwin-w)
 
 "==========================   Goyo  =================================================
 let g:goyo_width="55%"
@@ -390,34 +477,128 @@ endfunction
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
+"==========================   Coc  =================================================
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 
-"==========================ale=================================================
-let g:ale_linters = {'go':['goimports','gotype','gosimple']}
-"let g:ale_open_list=1
-let g:ale_fix_on_save = 1
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_set_quickfix=0
-let g:ale_sign_column_always = 1
-"自定义error和warning图标
-let g:ale_sign_error = '✗'
-let g:ale_sign_warning = '⚡'
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
-augroup CloseLoclistWindowGroup
-   autocmd!
-   autocmd QuitPre * if empty(&buftype) | lclose | endif
-augroup END
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
 
-" =================================== NVIM-Completion-Manager  =================
-let g:cm_matcher = {'module': 'cm_matchers.fuzzy_matcher', 'case': 'smartcase'}
-inoremap <silent> <c-u> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
-imap <expr> <CR>  (pumvisible() ?  "\<c-y>\<Plug>(expand_or_nl)" : "\<CR>")
-imap <expr> <Plug>(expand_or_nl) (cm#completed_is_snippet() ? "\<C-U>":"\<CR>")
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-imap <c-g> <Plug>(cm_force_refresh)
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[c` and `]c` to navigate diagnostics
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+"xmap <leader>f  <Plug>(coc-format-selected)
+"nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+"xmap <leader>a  <Plug>(coc-codeaction-selected)
+"nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` to fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Using CocList
+" Show all diagnostics
+nnoremap <silent> <space>d  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+"==================================== ultisnips ===========================
+" c-j c-k for moving in snippet
+
+"inoremap <silent> <expr> <CR> ((pumvisible() && empty(v:completed_item)) ?  "\<c-y>\<cr>" : (!empty(v:completed_item) ? ncm2_ultisnips#expand_or("", 'n') : "\<CR>" ))
+
+" c-j c-k for moving in snippet
+imap <expr> <c-u> ncm2_ultisnips#expand_or("\<Plug>(ultisnips_expand)", 'm')
+smap <c-u> <Plug>(ultisnips_expand)
+let g:UltiSnipsExpandTrigger		= "<Plug>(ultisnips_expand)"
+let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
+let g:UltiSnipsRemoveSelectModeMappings = 0
 
 " =================================== fzf ======================================
 nnoremap <leader>p :FZF<cr>
@@ -474,19 +655,15 @@ inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 let g:undotree_WindowLayout = 2
 nnoremap U :UndotreeToggle<CR>
 
-
-
 " ============================ Language Specific ==============================
+
 
 " go
 augroup go
   autocmd!
-  au FileType go nnoremap <leader>r :w !go run %<cr>
-  au FileType go nnoremap <leader>gr :GoReferrers<cr>
-  au FileType go nnoremap <leader>b :GoBuild<cr>
-  au FileType go nnoremap <leader>m :GoMetaLinter <cr>
   au VimResized * call ResizeTagbar()
   au BufRead *.go nested call ResizeTagbar()
+  au BufWritePre *.go call Format("go")
 "  au InsertLeave *.go nested :GoBuild!<cr>
 augroup END
 
@@ -513,16 +690,15 @@ augroup c
   autocmd!
   au BufRead *.c nnoremap <leader>r :w !gcc % -o /tmp/c-compiled-random-string && /tmp/c-compiled-random-string<cr>
   au BufRead *.c setlocal expandtab
-  au VimResized * call ResizeTagbar()
 augroup END
 
 " python
 augroup python
   autocmd!
   au FileType python setlocal expandtab
-  au VimResized * call ResizeTagbar()
   au FileType python setlocal ts=4 sw=4 sts=4
 augroup END
+
 
 " ===============================  tagbar  ====================================
 " resize tagbar according to main window's size
@@ -535,6 +711,7 @@ function ResizeTagbar()
     execute "TagbarOpen"
   endif
 endfunction
+
 
 " ===============================    fmt   ====================================
 function Format(arg)

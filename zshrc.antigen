@@ -13,6 +13,7 @@ go
 sudo
 wd
 docker
+history
 
 # github repos 
 zsh-users/zsh-syntax-highlighting
@@ -20,6 +21,8 @@ geometry-zsh/geometry
 djui/alias-tips
 zsh-users/zsh-autosuggestions
 ytet5uy4/fzf-widgets
+zdharma/fast-syntax-highlighting
+zdharma/history-search-multi-word
 EOBUNDLES
 
 # Load the theme.
@@ -27,6 +30,11 @@ antigen theme geometryl
 
 # Tell Antigen that you're done.
 antigen apply
+
+
+# History
+SAVEHIST=999
+HISTFILE=~/.zsh_history
 
 
 # Alias
@@ -50,3 +58,5 @@ export PUB_HOSTED_URL=https://pub.flutter-io.cn
 export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 
 source ~/.zshrc.local
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
