@@ -45,4 +45,8 @@ export GOROOT=$HOME/program/go
 export GOROOT_BOOTSTRAP=$HOME/program/go1.4
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
+# Flutter
+export PUB_HOSTED_URL=https://pub.flutter-io.cn
+export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
+
 source ~/.zshrc.local
