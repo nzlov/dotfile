@@ -246,13 +246,13 @@ if hour < 16
 endif
 
 "colorscheme solarized8
-colorscheme solarized8_flat
+"colorscheme solarized8_flat
 "colorscheme lucario
 "colorscheme nord
 "colorscheme onehalflight
 "colorscheme onehalfdark
 "colorscheme PaperColor
-"colorscheme gruvbox
+colorscheme gruvbox
 
 
 
@@ -395,7 +395,7 @@ function! CocCurrentFunction()
 endfunction
 
 let g:lightline = {
-      \ 'colorscheme': 'solarized',
+      \ 'colorscheme': 'gruvbox',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
