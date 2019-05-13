@@ -1,0 +1,20 @@
+{
+    "diagnostic.checkCurrentLine": false,
+    "coc.preferences.jumpCommand": "edit",
+    "diagnostic.messageTarget": "float",
+    "signature.target": "float",
+    "coc.preferences.hoverTarget": "float",
+    "suggest.noselect": true,
+    "snippets.ultisnips.directories": [
+      "UltiSnips",
+      "gosnippets/UltiSnips"
+    ],
+    "diagnostic.signOffset": 99999,
+    "languageserver": {
+      "golang": {
+        "command": "gopls",
+        "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+        "filetypes": ["go"]
+      }
+    }
+}

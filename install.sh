@@ -14,6 +14,7 @@ ln -s ~/.nzlovdotfile/colors ~/.vim/colors
 curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ln -s ~/.nzlovdotfile/vimrc ~/.config/nvim/init.vim
 ln -s ~/.nzlovdotfile/colors ~/.config/nvim/colors
+ln -s ~/.nzlovdotfile/coc-settings.json ~/.config/nvim/coc-settings.json
 # tmux
 rm ~/.tmux.conf
 ln -s ~/.nzlovdotfile/tmux.conf ~/.tmux.conf
