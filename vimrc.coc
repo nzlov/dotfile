@@ -206,8 +206,9 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'mbbill/undotree',             { 'on': 'UndotreeToggle'   }
 Plug 'mhinz/vim-signify'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-fugitive'
 "Plug 'airblade/vim-gitgutter'
@@ -375,18 +376,35 @@ let g:UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
 " ag
 let g:ag_working_path_mode='r'
 
-" airline
+"" airline
 "let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#ale#enabled = 1
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#ale#enabled = 1
 "let g:airline_solarized_bg='dark'
-let g:airline_powerline_fonts = 1
+"let g:airline_powerline_fonts = 1
 "let g:airline_solarized_bg='light'
-let g:airline_theme='solarized'
+"let g:airline_theme='solarized'
 "let g:airline_theme='onehalflight'
 "let g:airline_theme='onehalfdark'
 "let g:airline_theme='papercolor'
 
+
+"==========================   lightline   ==================================
+function! CocCurrentFunction()
+    return get(b:, 'coc_current_function', '')
+endfunction
+
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'cocstatus': 'coc#status',
+      \   'currentfunction': 'CocCurrentFunction'
+      \ },
+      \ }
 "==========================   vim-easymotion   ==================================
 " <Leader>f{char} to move to {char}
 map  <Leader>f <Plug>(easymotion-bd-f)
