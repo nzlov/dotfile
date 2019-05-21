@@ -243,9 +243,6 @@ Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 
 
-Plug 'zchee/deoplete-go', { 'do': 'make'}
-
-
 call plug#end()
 filetype on
 
@@ -306,6 +303,9 @@ let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck', 'deadcode', 'structc
 "let g:go_metalinter_deadline = "5s"
 let g:go_list_type = "quickfix"
 " let g:go_fmt_autosave=0
+let g:go_info_mode = 'gopls'
+let g:go_def_mode = 'gopls'
+
 if has('nvim')
     let g:go_term_enabled = 1
 endif
@@ -409,12 +409,16 @@ augroup END
 
 " =================================== deoplete  =================
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#go#sort_class = ['package', 'type', 'var', 'func', 'const']
 set completeopt-=preview
 set completeopt+=noinsert
 set completeopt+=noselect
+call deoplete#custom#option({
+    \ 'omni_patterns': { 'go': '[^. *\t]\.\w*' },
+    \ 'camel_case': v:true,
+    \ 'smart_case': v:true,
+    \})
 " Use smartcase.
-call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
+call deoplete#custom#source('_', 'matchers', ['matcher_fuzzy','matcher_head'])
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 

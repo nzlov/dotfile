@@ -1,1 +1,1 @@
-vimrc.coc
+/Users/nzlov/.nzlovdotfile/vimrc.coc
