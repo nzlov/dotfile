@@ -48,6 +48,7 @@ alias gobl="GOOS=linux go build -v "
 alias gor="go run -v "
 
 # Export
+export GOPROXY=https://goproxy.cn,direct
 export GOPATH=$HOME/workspace/go
 export GOROOT=$HOME/program/go
 export GOROOT_BOOTSTRAP=$HOME/program/go1.4
