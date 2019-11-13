@@ -33,7 +33,7 @@ antigen apply
 
 
 # History
-SAVEHIST=999
+SAVEHIST=999999999
 HISTFILE=~/.zsh_history
 
 
@@ -53,6 +53,7 @@ export GOPATH=$HOME/workspace/go
 export GOROOT=$HOME/program/go
 export GOROOT_BOOTSTRAP=$HOME/program/go1.4
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+export GOPROXY="https://goproxy.cn,direct"
 
 # Flutter
 export PUB_HOSTED_URL=https://pub.flutter-io.cn
