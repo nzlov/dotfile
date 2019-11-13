@@ -194,7 +194,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'scrooloose/nerdcommenter'
-"Plug 'fatih/vim-go'
+Plug 'fatih/vim-go'
 Plug 'majutsushi/tagbar'
 "Plug 'valloric/youcompleteme'
 "Plug 'mileszs/ack.vim'
@@ -202,8 +202,8 @@ Plug 'majutsushi/tagbar'
 " Plug 'rust-lang/rust.vim'
 Plug 'kshenoy/vim-signature'
 "Plug 'ternjs/tern_for_vim'
-"Plug 'junegunn/fzf'
-"Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 Plug 'mbbill/undotree',             { 'on': 'UndotreeToggle'   }
 Plug 'mhinz/vim-signify'
 Plug 'itchyny/lightline.vim'
@@ -289,6 +289,37 @@ let g:NERDTrimTrailingWhitespace = 1
 
 " emmet
 " let g:user_emmet_leader_key='<leader>t'
+
+
+" vim-go
+"let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+"let g:go_highlight_functions=1
+let g:go_highlight_function_calls = 1
+"let g:go_highlight_function_arguments = 1
+"let g:go_highlight_methods=1
+let g:go_highlight_structs=1
+let g:go_highlight_interfaces=1
+"let g:go_highlight_operators=1
+"let g:go_highlight_build_constrants=1
+let g:go_highlight_extra_types = 1
+let g:go_auto_sameids = 1
+let g:go_auto_type_info = 1
+let g:go_gocode_unimported_packages=1
+let g:go_fmt_command='goimports'
+"let g:go_auto_type_info = 1
+"let g:go_metalinter_enabled = ['golint']
+let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck', 'deadcode', 'structcheck', 'maligned', 'megacheck', 'dupl', 'interfacer']
+let g:go_metalinter_autosave_enabled = ['vet','errcheck']
+"let g:go_metalinter_autosave = 1
+let g:go_metalinter_deadline = "5s"
+let g:go_list_type = "quickfix"
+" let g:go_fmt_autosave=0
+let g:go_info_mode = 'gopls'
+let g:go_def_mode = 'gopls'
+if has('nvim')
+    let g:go_term_enabled = 1
+endif
 
 
 " auto-pairs
@@ -547,13 +578,13 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 
 " Using CocList
 " Show all diagnostics
-nnoremap <silent> <space>d  :<C-u>CocList --auto-preview diagnostics<cr>
+nnoremap <silent> <space>d  :<C-u>CocList diagnostics<cr>
 " Manage extensions
 nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
 " Show commands
 nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList --auto-preview outline<cr>
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols
 nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
@@ -561,7 +592,7 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocList files<CR>
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 "==================================== ultisnips ===========================
 " c-j c-k for moving in snippet
@@ -575,6 +606,55 @@ let g:UltiSnipsExpandTrigger		= "<Plug>(ultisnips_expand)"
 let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
 let g:UltiSnipsRemoveSelectModeMappings = 0
+
+" =================================== fzf ======================================
+nnoremap <leader>p :FZF<cr>
+" This is the default extra key bindings
+let g:fzf_action = {
+      \ 'enter': 'tab split',
+      \ 'ctrl-x': 'split',
+      \ 'ctrl-v': 'vsplit' }
+
+let g:fzf_buffers_jump = 1
+
+" Default fzf layout
+" - down / up / left / right
+let g:fzf_layout = { 'down': '~40%' }
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+      \ { 'fg':      ['fg', 'Normal'],
+      \ 'bg':      ['bg', 'Normal'],
+      \ 'hl':      ['fg', 'Comment'],
+      \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+      \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+      \ 'hl+':     ['fg', 'Statement'],
+      \ 'info':    ['fg', 'PreProc'],
+      \ 'prompt':  ['fg', 'Conditional'],
+      \ 'pointer': ['fg', 'Exception'],
+      \ 'marker':  ['fg', 'Keyword'],
+      \ 'spinner': ['fg', 'Label'],
+      \ 'header':  ['fg', 'Comment'] }
+
+" Enable per-command history.
+" CTRL-N and CTRL-P will be automatically bound to next-history and
+" previous-history instead of down and up. If you don't like the change,
+" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+" Advanced customization using autoload functions
+inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
+
 
 " ----------------------------------------------------------------------------
 " undotree
