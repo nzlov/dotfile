@@ -554,6 +554,8 @@ augroup mygroup
   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
   " Update signature help on jump placeholder
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+  " The editor.action.organizeImport code action will auto-format code and add missing imports. To run this automatically on save
+  autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 augroup end
 
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
