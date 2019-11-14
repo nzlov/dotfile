@@ -2,7 +2,7 @@
     "coc.preferences.rootPatterns":[".vim",".git",".hg",".projections.json"],
     "codeLens.enable": true,
     "diagnostic.checkCurrentLine": true,
-    "coc.preferences.jumpCommand": "edit",
+    "coc.preferences.jumpCommand": "tab drop",
     "diagnostic.messageTarget": "float",
     "signature.target": "float",
     "coc.preferences.hoverTarget": "float",
