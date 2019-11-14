@@ -40,8 +40,8 @@ nnoremap <leader>w :w<cr>
 nnoremap <leader>q :qa!<cr>
 
 nnoremap <leader>t :TagbarToggle<cr>
-nmap <C-n> :cnext<CR>
-nmap <C-m> :cprevious<CR>
+"nmap <C-n> :cnext<CR>
+"nmap <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
 " nnoremap <c-g> :YcmCompleter GoTo<cr>
 " nnoremap <c-h> <c-o>
@@ -216,6 +216,7 @@ Plug 'tpope/vim-fugitive'
 "Plug 'w0rp/ale'
 "Plug 'terryma/vim-multiple-cursors'
 Plug 'easymotion/vim-easymotion'
+Plug 'terryma/vim-multiple-cursors'
 
 Plug 'junegunn/goyo.vim'
 Plug 'mhinz/vim-startify'
@@ -544,7 +545,6 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " use `:OR` for organize import of current buffer
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
-
 " Using CocList
 " Show all diagnostics
 nnoremap <silent> <space>d  :<C-u>CocList --auto-preview diagnostics<cr>
@@ -555,13 +555,20 @@ nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document
 nnoremap <silent> <space>o  :<C-u>CocList --auto-preview outline<cr>
 " Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent> <space>i  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
 nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list
+" Show files
 nnoremap <silent> <space>p  :<C-u>CocList files<CR>
+" Resume latest coc list
+nnoremap <silent> <space>r  :<C-u>CocListResume<CR>
+
+"==================================== vim-multiple-cursors ===========================
+
+let g:multi_cursor_exit_from_visual_mode = 1
+let g:multi_cursor_exit_from_insert_mode = 1
 
 "==================================== ultisnips ===========================
 " c-j c-k for moving in snippet
@@ -590,7 +597,7 @@ augroup go
   autocmd!
   au VimResized * call ResizeTagbar()
   au BufRead *.go nested call ResizeTagbar()
-  au BufWritePre *.go call Format("go")
+  au BufWritePre *.go call CocAction('runCommand', 'editor.action.organizeImport')
 "  au InsertLeave *.go nested :GoBuild!<cr>
 augroup END
 
@@ -603,13 +610,13 @@ augroup END
 " html
 augroup html
   autocmd!
-  au BufWritePre *.html call Format("html")
+"  au BufWritePre *.html call Format("html")
 augroup END
 
 " css
 augroup css
   autocmd!
-  au BufWritePre *.css call Format("css")
+" au BufWritePre *.css call Format("css")
 augroup END
 
 " c
@@ -637,46 +644,4 @@ function ResizeTagbar()
   else
     execute "TagbarOpen"
   endif
-endfunction
-
-
-" ===============================    fmt   ====================================
-function Format(arg)
-
-  if a:arg == "js"
-    let l:cmd = "js-beautify -r -n -s 2 -m 2 -b collapse-preserve-inline"
-  elseif a:arg == "go"
-    let l:cmd = "goimports -w"
-  elseif a:arg == "html"
-    let l:cmd = "js-beautify --html -r -n -s 2 -m 2"
-  elseif a:arg == "css"
-    let l:cmd = "js-beautify --css -r -n -s 2"
-  endif
-
-  let l:curw = winsaveview()
-
-  " Write current unsaved buffer to a temp file
-  let l:tmpname = tempname()
-  call writefile(getline(1, '$'), l:tmpname)
-  call system(l:cmd ." ". l:tmpname)
-
-  try | silent undojoin | catch | endtry
-
-  " Replace current file with temp file, then reload buffer
-  let old_fileformat = &fileformat
-  if exists("*getfperm")
-    " save old file permissions
-    let original_fperm = getfperm(expand('%'))
-  endif
-  call rename(l:tmpname, expand('%'))
-  " restore old file permissions
-  if exists("*setfperm") && original_fperm != ''
-    call setfperm(expand('%'), original_fperm)
-  endif
-  silent edit!
-  let &fileformat = old_fileformat
-  let &syntax = &syntax
-
-  call winrestview(l:curw)
-
 endfunction
