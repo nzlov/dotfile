@@ -33,12 +33,12 @@ antigen apply
 
 
 # History
-SAVEHIST=999
+SAVEHIST=999999999
 HISTFILE=~/.zsh_history
 
 
 # Alias
-alias v="nvim"
+alias e="nvim"
 alias gogu="go get -u -v "
 alias gog="go get -v "
 alias goi="go install -v "
@@ -54,6 +54,7 @@ export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 # Flutter
 export PUB_HOSTED_URL=https://pub.flutter-io.cn
 export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
+#export ENABLE_FLUTTER_DESKTOP=true
 
 source ~/.zshrc.local
 
