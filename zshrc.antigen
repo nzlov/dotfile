@@ -59,4 +59,3 @@ export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 source ~/.zshrc.local
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-. "/root/.acme.sh/acme.sh.env"
