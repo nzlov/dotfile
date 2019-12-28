@@ -240,7 +240,7 @@ endif
 
 let hour = strftime("%H")
 set background=dark
-if hour < 16
+if hour < 15
     if hour > 6
         set background=light
     endif

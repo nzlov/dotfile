@@ -46,18 +46,23 @@ alias gob="go build -v "
 alias gobw="GOOS=windows go build -v "
 alias gobl="GOOS=linux go build -v "
 alias gor="go run -v "
+alias c="navi"
 
 # Export
+export GO111MODULE="on"
 export GOPROXY=https://goproxy.cn,direct
 export GOROOT=$HOME/program/go
 export GOPATH=$HOME/workspace/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+export NAVI_PATH=$HOME/.nzlovdotfile/navi
 
 # Flutter
 export PUB_HOSTED_URL=https://pub.flutter-io.cn
 export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 #export ENABLE_FLUTTER_DESKTOP=true
 
+# Source
+source "$(navi widget zsh)"
 source ~/.zshrc.local
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
