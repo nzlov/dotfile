@@ -48,6 +48,7 @@ alias gobl="GOOS=linux go build -v "
 alias gor="go run -v "
 alias c="navi"
 alias cq="navi query"
+alias cs="navi search"
 
 # Export
 export GO111MODULE="on"
