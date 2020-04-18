@@ -222,7 +222,9 @@ Plug 'junegunn/goyo.vim'
 Plug 'mhinz/vim-startify'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'iamcco/dart-vim-plugin'
+Plug 'jparise/vim-graphql'
 
 call plug#end()
 filetype on
