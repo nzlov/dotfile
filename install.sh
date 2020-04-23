@@ -15,7 +15,7 @@ curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubuserc
 ln -s ~/.nzlovdotfile/vimrc ~/.config/nvim/init.vim
 ln -s ~/.nzlovdotfile/colors ~/.config/nvim/colors
 ln -s ~/.nzlovdotfile/coc-settings.json ~/.config/nvim/coc-settings.json
-echo "Run Command `:CocInstall coc-tag coc-ultisnips coc-snippets coc-pairs coc-lists coc-hightlight coc-git coc-yaml coc-json` in nvim"
+echo "Run Command `:CocInstall coc-tag coc-ultisnips coc-snippets coc-pairs coc-lists coc-git coc-yaml coc-json coc-python coc-highlight coc-tabnine coc-go` in nvim"
 # tmux
 rm ~/.tmux.conf
 ln -s ~/.nzlovdotfile/tmux.conf ~/.tmux.conf

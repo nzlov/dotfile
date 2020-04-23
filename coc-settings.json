@@ -5,6 +5,7 @@
     "coc.preferences.jumpCommand": "tab drop",
     "diagnostic.messageTarget": "float",
     "signature.target": "float",
+    "list.source.files.excludePatterns": ["**/.git/**"],
     "coc.preferences.hoverTarget": "float",
     "coc.preferences.formatOnSaveFiletypes":["go","dart"],
     "suggest.noselect": true,
@@ -41,16 +42,12 @@
 		"default": "\uf29c"
 	},
     "diagnostic.signOffset": 99999,
-    "languageserver": {
-      "golang": {
-        "command": "gopls",
-        "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-        "filetypes": ["go"],
-        "initializationOptions": {
+    "go.goplsOptions": {
+      "completeUnimported": true,
+      "go.goplsOptions":{
           "usePlaceholders": true,
           "completeUnimported": true
-        }
       }
-    },   
+    },
     "python.jediEnabled": false
 }
