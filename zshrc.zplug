@@ -1,20 +1,23 @@
 source ~/.zplug/init.zsh
 
 # Plugin
-zplug "plugins/brew",                               from:oh-my-zsh
-zplug "plugins/command-not-found",                  from:oh-my-zsh
-zplug "plugins/cp",                                 from:oh-my-zsh
-zplug "plugins/git",                                from:oh-my-zsh
-zplug "plugins/go",                                 from:oh-my-zsh
-zplug "plugins/sudo",                               from:oh-my-zsh
-zplug "plugins/tmux",                               from:oh-my-zsh
-zplug "plugins/wd",                                 from:oh-my-zsh
+#zplug "plugins/brew",                               from:oh-my-zsh
+#zplug "plugins/command-not-found",                  from:oh-my-zsh
+#zplug "plugins/cp",                                 from:oh-my-zsh
+#zplug "plugins/git",                                from:oh-my-zsh
+#zplug "plugins/go",                                 from:oh-my-zsh
+#zplug "plugins/sudo",                               from:oh-my-zsh
+#zplug "plugins/wd",                                 from:oh-my-zsh
+#zplug "plugins/docker",                             from:oh-my-zsh
+#zplug "plugins/history",                            from:oh-my-zsh
 
-zplug "zsh-users/zsh-syntax-highlighting"
-zplug "geometry-zsh/geometry"
-zplug "djui/alias-tips"
-zplug "zsh-users/zsh-autosuggestions"
-zplug "ytet5uy4/fzf-widgets"
+#zplug "zsh-users/zsh-history-substring-search"
+#zplug "geometry-zsh/geometry", as:theme
+#zplug "djui/alias-tips"
+#zplug "zsh-users/zsh-autosuggestions"
+#zplug "zsh-users/zsh-syntax-highlighting"
+#zplug "zdharma/history-search-multi-word"
+#zplug "zsh-users/zsh-completions"
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -25,66 +28,46 @@ if ! zplug check --verbose; then
 fi
 
 # Then, source plugins and add commands to $PATH
-zplug load --verbose
+zplug load
 
-# Plugin Config
-if zplug check 'ytet5uy4/fzf-widgets'; then
-  # Map widgets to key
-  bindkey '^@'  fzf-select-widget
-  bindkey '^@.' fzf-edit-dotfiles
-  bindkey '^@c' fzf-change-directory
-  bindkey '^@n' fzf-change-named-directory
-  bindkey '^@f' fzf-edit-files
-  bindkey '^@k' fzf-kill-processes
-  bindkey '^@s' fzf-exec-ssh
-  bindkey '^\'  fzf-change-recent-directory
-  bindkey '^r'  fzf-insert-history
-  bindkey '^xf' fzf-insert-files
-  bindkey '^xd' fzf-insert-directory
-  bindkey '^xn' fzf-insert-named-directory
-
-  ## Git
-  bindkey '^@g'  fzf-select-git-widget
-  bindkey '^@ga' fzf-git-add-files
-  bindkey '^@gc' fzf-git-change-repository
-
-  # GitHub
-  bindkey '^@h'  fzf-select-github-widget
-  bindkey '^@hs' fzf-github-show-issue
-  bindkey '^@hc' fzf-github-close-issue
-
-  ## Docker
-  bindkey '^@d'  fzf-select-docker-widget
-  bindkey '^@dc' fzf-docker-remove-containers
-  bindkey '^@di' fzf-docker-remove-images
-  bindkey '^@dv' fzf-docker-remove-volumes
-
-  # Enable Exact-match by fzf-insert-history
-  FZF_WIDGET_OPTS[insert-history]='--exact'
-
-  # Start fzf in a tmux pane
-  FZF_WIDGET_TMUX=1
-fi
-
-export ZSH=~/.zplug/repos/robbyrussell/oh-my-zsh
-source $ZSH/oh-my-zsh.sh
+# History
+SAVEHIST=999999999
+HISTFILE=~/.zsh_history
 
 # Alias
-alias v="vim"
-alias gog="go get -u -v "
+alias e="nvim"
+alias gogu="go get -u -v "
+alias gog="go get -v "
 alias goi="go install -v "
 alias gob="go build -v "
 alias gobw="GOOS=windows go build -v "
 alias gobl="GOOS=linux go build -v "
 alias gor="go run -v "
+alias c="navi"
+alias cq="navi query"
+alias cs="navi search"
+
 
 # Export
-export GOPATH=$HOME/workspace/go
-export GOROOT=$HOME/program/go
+export GO111MODULE="on"
+export GOPROXY=https://goproxy.cn,direct
 export GOROOT_BOOTSTRAP=$HOME/program/go1.4
-export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+export GOROOT=$HOME/program/go
+export GOPATH=$HOME/workspace/go
+export PATH=$GOPATH/bin:$GOROOT/bin:/usr/local/bin:$PATH
+export NAVI_PATH=$HOME/.nzlovdotfile/navi
 
-export http_proxy=http://127.0.0.1:1087/
-export https_proxy=http://127.0.0.1:1087/
+# Flutter
+export PUB_HOSTED_URL=https://pub.flutter-io.cn
+export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
+#export ENABLE_FLUTTER_DESKTOP=true
 
+# Source
+#if [ $commands[navi] ]; then
+#  source <(navi widget zsh)
+#fi
+#if [ $commands[kubectl] ]; then
+#  source <(kubectl completion zsh)
+#fi
 
+#source ~/.zshrc.local

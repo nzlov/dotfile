@@ -3,6 +3,10 @@ source ~/.nzlovdotfile/antigen.zsh
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
 
+if [[ -z "$ZSH_CACHE_DIR" ]]; then
+  ZSH_CACHE_DIR="$ZSH/cache"
+fi
+
 antigen bundles <<EOBUNDLES
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 brew 
@@ -20,9 +24,9 @@ zsh-users/zsh-syntax-highlighting
 geometry-zsh/geometry
 djui/alias-tips
 zsh-users/zsh-autosuggestions
-ytet5uy4/fzf-widgets
 zdharma/fast-syntax-highlighting
 zdharma/history-search-multi-word
+zsh-users/zsh-completions
 EOBUNDLES
 
 # Load the theme.
@@ -65,7 +69,8 @@ export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 #export ENABLE_FLUTTER_DESKTOP=true
 
 # Source
-#source "$(navi widget zsh)"
-source ~/.zshrc.local
+if [ $commands[navi] ]; then
+  source <(navi widget zsh)
+fi
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+source ~/.zshrc.local

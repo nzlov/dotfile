@@ -9,7 +9,7 @@
     "coc.preferences.hoverTarget": "float",
     "coc.preferences.formatOnSaveFiletypes":["go","dart"],
     "suggest.noselect": true,
-    "suggest.enablePreview":true,
+    "suggest.enablePreview": true,
     "snippets.ultisnips.directories": [
       "UltiSnips",
       "gosnippets/UltiSnips"
@@ -43,6 +43,7 @@
 	},
     "diagnostic.signOffset": 99999,
     "go.goplsOptions": {
+      "usePlaceholders": true,
       "completeUnimported": true,
       "go.goplsOptions":{
           "usePlaceholders": true,
