@@ -561,7 +561,7 @@ nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document
 nnoremap <silent> <space>o  :<C-u>CocList --auto-preview outline<cr>
 " Search workspace symbols
-nnoremap <silent> <space>i  :<C-u>CocList -I symbols<cr>
+nnoremap <silent> <space>i  :<C-u>CocList --auto-preview -I symbols<cr>
 " Do default action for next item.
 nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
