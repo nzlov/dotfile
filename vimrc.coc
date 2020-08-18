@@ -226,6 +226,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'iamcco/dart-vim-plugin'
 Plug 'jparise/vim-graphql'
+Plug 'luochen1990/rainbow'
+Plug 'liuchengxu/vista.vim'
 
 call plug#end()
 filetype on
@@ -244,7 +246,7 @@ endif
 
 let hour = strftime("%H")
 set background=dark
-if hour < 15
+if hour < 17
     if hour > 6
         set background=light
     endif
@@ -295,6 +297,9 @@ let g:NERDTrimTrailingWhitespace = 1
 " emmet
 " let g:user_emmet_leader_key='<leader>t'
 
+
+" rainbow
+let g:rainbow_active = 1
 
 " auto-pairs
 let g:AutoPairsCenterLine=0
@@ -657,7 +662,7 @@ augroup END
 function ResizeTagbar()
   " debug
  "  echom winwidth(0).":".winwidth(1)
-  if winwidth(0) < 80
+  if winwidth(0) < 130
     execute "TagbarClose"
   else
     execute "TagbarOpen"
