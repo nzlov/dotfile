@@ -312,7 +312,7 @@ let g:AutoPairsCenterLine=0
 
 " tagbar
 let g:tagbar_left=1
-let g:tagbar_width=50
+let g:tagbar_width=40
 let g:tagbar_iconchars=['▸', '▾']
 "let g:tagbar_autopreview = 1
 " au FileType go nested :TagbarOpen
@@ -369,7 +369,6 @@ let g:ag_working_path_mode='r'
 "let g:airline_theme='onehalflight'
 "let g:airline_theme='onehalfdark'
 "let g:airline_theme='papercolor'
-
 
 "==========================   lightline   ==================================
 function! CocCurrentFunction()
