@@ -227,7 +227,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'iamcco/dart-vim-plugin'
 Plug 'jparise/vim-graphql'
 Plug 'luochen1990/rainbow'
-Plug 'liuchengxu/vista.vim'
+"Plug 'liuchengxu/vista.vim'
 
 call plug#end()
 filetype on
