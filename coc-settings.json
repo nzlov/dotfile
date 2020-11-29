@@ -4,6 +4,7 @@
     "diagnostic.checkCurrentLine": true,
     "coc.preferences.jumpCommand": "tab drop",
     "diagnostic.messageTarget": "float",
+    "diagnostic.refreshAfterSave":true,
     "signature.target": "float",
     "list.source.files.excludePatterns": ["**/.git/**"],
     "coc.preferences.hoverTarget": "float",
@@ -14,6 +15,7 @@
       "UltiSnips",
       "gosnippets/UltiSnips"
     ],
+    "suggest.removeDuplicateItems":true,
     "suggest.completionItemKindLabels": {
 		"keyword": "\uf1de",
 		"variable": "\ue79b",
@@ -41,14 +43,9 @@
 		"typeParameter": "\uf728",
 		"default": "\uf29c"
 	},
-    "diagnostic.signOffset": 99999,
     "go.goplsOptions": {
       "usePlaceholders": true,
-      "completeUnimported": true,
-      "go.goplsOptions":{
-          "usePlaceholders": true,
-          "completeUnimported": true
-      }
+      "completeUnimported": true
     },
     "python.jediEnabled": false
 }

@@ -30,7 +30,7 @@ zsh-users/zsh-completions
 EOBUNDLES
 
 # Load the theme.
-antigen theme geometryl
+antigen theme geometry-zsh/geometry
 
 # Tell Antigen that you're done.
 antigen apply
