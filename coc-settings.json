@@ -1,20 +1,8 @@
 {
-    "coc.preferences.rootPatterns":[".vim",".git",".hg",".projections.json"],
-    "codeLens.enable": true,
-    "diagnostic.checkCurrentLine": true,
-    "coc.preferences.jumpCommand": "tab drop",
-    "diagnostic.messageTarget": "float",
-    "diagnostic.refreshAfterSave":true,
-    "signature.target": "float",
-    "list.source.files.excludePatterns": ["**/.git/**"],
-    "coc.preferences.hoverTarget": "float",
-    "coc.preferences.formatOnSaveFiletypes":["go","dart"],
+    "suggest.enablePreselect": false,
+    "suggest.numberSelect": true,
     "suggest.noselect": true,
     "suggest.enablePreview": true,
-    "snippets.ultisnips.directories": [
-      "UltiSnips",
-      "gosnippets/UltiSnips"
-    ],
     "suggest.removeDuplicateItems":true,
     "suggest.completionItemKindLabels": {
 		"keyword": "\uf1de",
@@ -43,6 +31,23 @@
 		"typeParameter": "\uf728",
 		"default": "\uf29c"
 	},
+    "diagnostic.checkCurrentLine": true,
+    "diagnostic.virtualText":true,
+    "diagnostic.messageTarget": "echo",
+    "diagnostic.refreshAfterSave":true,
+    "diagnostic.errorSign": "❌",
+    "diagnostic.warningSign": "⚠️",
+    "signature.target": "float",
+    "codeLens.enable": true,
+    "list.source.files.excludePatterns": ["**/.git/**"],
+    "coc.preferences.jumpCommand": "tab drop",
+    "coc.preferences.rootPatterns":[".vim",".git",".hg",".projections.json"],
+    "coc.preferences.hoverTarget": "float",
+    "coc.preferences.formatOnSaveFiletypes":["go","dart"],
+    "snippets.ultisnips.directories": [
+      "UltiSnips",
+      "gosnippets/UltiSnips"
+    ],
     "go.goplsOptions": {
       "usePlaceholders": true,
       "completeUnimported": true
