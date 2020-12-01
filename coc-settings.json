@@ -3,7 +3,7 @@
     "suggest.numberSelect": true,
     "suggest.noselect": true,
     "suggest.enablePreview": true,
-    "suggest.floatEnable":false,
+    "suggest.floatEnable":true,
     "suggest.removeDuplicateItems":true,
     "suggest.completionItemKindLabels": {
 		"keyword": "\uf1de",
