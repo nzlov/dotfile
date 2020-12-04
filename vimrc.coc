@@ -189,7 +189,7 @@ endif
 " colors
 "Plug 'arcticicestudio/nord-vim'
 "Plug 'sonph/onehalf', {'rtp': 'vim'}
-Plug 'morhetz/gruvbox'
+"Plug 'morhetz/gruvbox'
 
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -254,12 +254,12 @@ endif
 
 "colorscheme solarized8
 "colorscheme solarized8_flat
-"colorscheme lucario
+colorscheme lucario
 "colorscheme nord
 "colorscheme onehalflight
 "colorscheme onehalfdark
 "colorscheme PaperColor
-colorscheme gruvbox
+"colorscheme gruvbox
 
 
 
@@ -376,7 +376,7 @@ function! CocCurrentFunction()
 endfunction
 
 let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
+      \ 'colorscheme': 'nord',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'cocstatus', 'currentfunction',  'filename' ]],
@@ -585,7 +585,7 @@ function! s:GrepArgs(...)
 endfunction
 
 " Keymapping for grep word under cursor with interactive mode
-nnoremap <silent> <Leader>cf :exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
+nnoremap <silent> <Leader>cf :exe 'CocList --auto-preview -I --input='.expand('<cword>').' grep'<CR>
 
 "==================================== vim-multiple-cursors ===========================
 
