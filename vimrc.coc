@@ -312,10 +312,29 @@ let g:AutoPairsCenterLine=0
 
 " tagbar
 let g:tagbar_left=1
-let g:tagbar_width=40
 let g:tagbar_iconchars=['▸', '▾']
+let g:tagbar_width = max([40, winwidth(0) / 5])
+" let g:tagbar_show_tag_linenumbers = 2
+" let g:tagbar_autopreview = 1
 "let g:tagbar_autopreview = 1
 " au FileType go nested :TagbarOpen
+let g:tagbar_scopestrs = {
+    \    'class': "\uf0e8",
+    \    'const': "\uf8ff",
+    \    'constant': "\uf8ff",
+    \    'enum': "\uf702",
+    \    'field': "\uf30b",
+    \    'func': "\uf794",
+    \    'function': "\uf794",
+    \    'getter': "\ufab6",
+    \    'implementation': "\uf776",
+    \    'interface': "\uf7fe",
+    \    'map': "\ufb44",
+    \    'member': "\uf02b",
+    \    'method': "\uf6a6",
+    \    'setter': "\uf7a9",
+    \    'variable': "\uf71b",
+    \ }
 let g:tagbar_type_go = {
 	\ 'ctagstype' : 'go',
 	\ 'kinds'     : [
