@@ -49,6 +49,7 @@
     ],
     "go.goplsOptions": {
       "usePlaceholders": true,
+      "deepCompletion": true,
       "completeUnimported": true
     },
     "python.jediEnabled": false
