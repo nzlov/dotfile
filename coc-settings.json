@@ -33,7 +33,6 @@
     "diagnostic.checkCurrentLine": true,
     "diagnostic.virtualText":true,
     "diagnostic.messageTarget": "echo",
-    "diagnostic.refreshAfterSave":true,
     "diagnostic.errorSign": "❌",
     "diagnostic.warningSign": "⚠️",
     "signature.target": "float",
