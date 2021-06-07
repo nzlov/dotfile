@@ -43,6 +43,7 @@ HISTFILE=~/.zsh_history
 
 # Alias
 alias e="nvim"
+alias gogopls="go get -u -v golang.org/x/tools/gopls@master"
 alias gogu="go get -u -v "
 alias gog="go get -v "
 alias goi="go install -v "
@@ -62,6 +63,9 @@ export GOROOT=$HOME/program/go
 export GOPATH=$HOME/workspace/go
 export PATH=$GOPATH/bin:$GOROOT/bin:/usr/local/bin:$PATH
 export NAVI_PATH=$HOME/.nzlovdotfile/navi
+
+# brew
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/bottles/
 
 # Flutter
 export PUB_HOSTED_URL=https://pub.flutter-io.cn
