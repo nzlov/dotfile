@@ -40,7 +40,7 @@
     "list.source.files.excludePatterns": ["**/.git/**"],
     "coc.preferences.jumpCommand": "tab drop",
     "coc.preferences.rootPatterns":[".vim",".git",".hg",".projections.json"],
-    "coc.preferences.hoverTarget": "float",
+    "coc.preferences.formatOnType": true,
     "coc.preferences.formatOnSaveFiletypes":["go","dart"],
     "snippets.ultisnips.directories": [
       "UltiSnips",
@@ -49,7 +49,7 @@
     "go.goplsOptions": {
       "usePlaceholders": true,
       "deepCompletion": true,
-      "completeUnimported": true,
+      "gofumpt":true,
       "experimentalWorkspaceModule": true
     },
     "python.jediEnabled": false
