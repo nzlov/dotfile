@@ -38,6 +38,7 @@
     "signature.target": "float",
     "codeLens.enable": true,
     "list.source.files.excludePatterns": ["**/.git/**"],
+    "coc.preferences.currentFunctionSymbolAutoUpdate": true,
     "coc.preferences.jumpCommand": "tab drop",
     "coc.preferences.rootPatterns":[".vim",".git",".hg",".projections.json"],
     "coc.preferences.formatOnType": true,
