@@ -42,7 +42,7 @@ HISTFILE=~/.zsh_history
 
 
 # Alias
-alias e="nvim"
+alias e="lvim"
 alias gogopls="go get -u -v golang.org/x/tools/gopls@master"
 alias gogu="go get -u -v "
 alias gog="go get -v "

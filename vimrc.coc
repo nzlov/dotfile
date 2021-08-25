@@ -481,6 +481,8 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 
+let g:coc_global_extensions = ['coc-json','coc-go','coc-tag','coc-ultisnips','coc-snippets','coc-pairs','coc-lists','coc-git','coc-yaml','coc-highlight','coc-tabnine']
+
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
