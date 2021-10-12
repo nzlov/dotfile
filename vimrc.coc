@@ -40,7 +40,6 @@ nnoremap <leader>w :w<cr>
 " nnoremap <leader>q :tabfirst<cr>:tabonly<cr><c-z>
 nnoremap <leader>q :qa!<cr>
 
-nnoremap <leader>t :TagbarToggle<cr>
 "nmap <C-n> :cnext<CR>
 "nmap <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
@@ -191,12 +190,13 @@ endif
 "Plug 'sonph/onehalf', {'rtp': 'vim'}
 "Plug 'morhetz/gruvbox'
 
-Plug 'scrooloose/nerdtree'
+Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'ryanoasis/vim-devicons'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'scrooloose/nerdcommenter'
 "Plug 'fatih/vim-go'
-Plug 'majutsushi/tagbar'
+"Plug 'majutsushi/tagbar'
 "Plug 'valloric/youcompleteme'
 "Plug 'mileszs/ack.vim'
 "Plug 'rking/ag.vim'
@@ -268,7 +268,7 @@ colorscheme lucario
 filetype plugin on
 
 " nerdtree
-let NERDTreeWinPos=1
+let NERDTreeWinPos=0
 " nerdtree-tabs
 map <leader>n <plug>NERDTreeTabsToggle<cr>
 
@@ -310,58 +310,58 @@ let g:AutoPairsCenterLine=0
 " au BufWrite *.go :Autoformat
 
 
-" tagbar
-let g:tagbar_left=1
-let g:tagbar_iconchars=['▸', '▾']
-let g:tagbar_width = max([40, winwidth(0) / 5])
-" let g:tagbar_show_tag_linenumbers = 2
-" let g:tagbar_autopreview = 1
-"let g:tagbar_autopreview = 1
-" au FileType go nested :TagbarOpen
-let g:tagbar_scopestrs = {
-    \    'class': "\uf0e8",
-    \    'const': "\uf8ff",
-    \    'constant': "\uf8ff",
-    \    'enum': "\uf702",
-    \    'field': "\uf30b",
-    \    'func': "\uf794",
-    \    'function': "\uf794",
-    \    'getter': "\ufab6",
-    \    'implementation': "\uf776",
-    \    'interface': "\uf7fe",
-    \    'map': "\ufb44",
-    \    'member': "\uf02b",
-    \    'method': "\uf6a6",
-    \    'setter': "\uf7a9",
-    \    'variable': "\uf71b",
-    \ }
-let g:tagbar_type_go = {
-	\ 'ctagstype' : 'go',
-	\ 'kinds'     : [
-		\ 'p:package',
-		\ 'i:imports:1',
-		\ 'c:constants',
-		\ 'v:variables',
-		\ 't:types',
-		\ 'n:interfaces',
-		\ 'w:fields',
-		\ 'e:embedded',
-		\ 'm:methods',
-		\ 'r:constructor',
-		\ 'f:functions'
-	\ ],
-	\ 'sro' : '.',
-	\ 'kind2scope' : {
-		\ 't' : 'ctype',
-		\ 'n' : 'ntype'
-	\ },
-	\ 'scope2kind' : {
-		\ 'ctype' : 't',
-		\ 'ntype' : 'n'
-	\ },
-	\ 'ctagsbin'  : 'gotags',
-	\ 'ctagsargs' : '-sort -silent'
-    \ }
+"" tagbar
+"let g:tagbar_left=1
+"let g:tagbar_iconchars=['▸', '▾']
+"let g:tagbar_width = max([40, winwidth(0) / 5])
+"" let g:tagbar_show_tag_linenumbers = 2
+"" let g:tagbar_autopreview = 1
+""let g:tagbar_autopreview = 1
+"" au FileType go nested :TagbarOpen
+"let g:tagbar_scopestrs = {
+"    \    'class': "\uf0e8",
+"    \    'const': "\uf8ff",
+"    \    'constant': "\uf8ff",
+"    \    'enum': "\uf702",
+"    \    'field': "\uf30b",
+"    \    'func': "\uf794",
+"    \    'function': "\uf794",
+"    \    'getter': "\ufab6",
+"    \    'implementation': "\uf776",
+"    \    'interface': "\uf7fe",
+"    \    'map': "\ufb44",
+"    \    'member': "\uf02b",
+"    \    'method': "\uf6a6",
+"    \    'setter': "\uf7a9",
+"    \    'variable': "\uf71b",
+"    \ }
+"let g:tagbar_type_go = {
+"	\ 'ctagstype' : 'go',
+"	\ 'kinds'     : [
+"		\ 'p:package',
+"		\ 'i:imports:1',
+"		\ 'c:constants',
+"		\ 'v:variables',
+"		\ 't:types',
+"		\ 'n:interfaces',
+"		\ 'w:fields',
+"		\ 'e:embedded',
+"		\ 'm:methods',
+"		\ 'r:constructor',
+"		\ 'f:functions'
+"	\ ],
+"	\ 'sro' : '.',
+"	\ 'kind2scope' : {
+"		\ 't' : 'ctype',
+"		\ 'n' : 'ntype'
+"	\ },
+"	\ 'scope2kind' : {
+"		\ 'ctype' : 't',
+"		\ 'ntype' : 'n'
+"	\ },
+"	\ 'ctagsbin'  : 'gotags',
+"	\ 'ctagsargs' : '-sort -silent'
+"    \ }
 
 " ycm
 "set completeopt -=preview
@@ -481,6 +481,8 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 
+let g:coc_global_extensions = ['coc-json','coc-go','coc-tag','coc-ultisnips','coc-snippets','coc-pairs','coc-lists','coc-git','coc-yaml','coc-highlight','coc-tabnine']
+
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
@@ -493,7 +495,7 @@ function! s:check_back_space() abort
 endfunction
 
 " Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
+inoremap <silent><expr> <c-o> coc#refresh()
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
@@ -636,9 +638,7 @@ nnoremap U :UndotreeToggle<CR>
 " go
 augroup go
   autocmd!
-  au VimResized * call ResizeTagbar()
-  au BufRead *.go nested call ResizeTagbar()
-  au BufWritePre *.go call CocAction('runCommand', 'editor.action.organizeImport')
+  au BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
 "  au InsertLeave *.go nested :GoBuild!<cr>
 augroup END
 
@@ -673,16 +673,3 @@ augroup python
   au FileType python setlocal expandtab
   au FileType python setlocal ts=4 sw=4 sts=4
 augroup END
-
-
-" ===============================  tagbar  ====================================
-" resize tagbar according to main window's size
-function ResizeTagbar()
-  " debug
- "  echom winwidth(0).":".winwidth(1)
-  if winwidth(0) < 130
-    execute "TagbarClose"
-  else
-    execute "TagbarOpen"
-  endif
-endfunction

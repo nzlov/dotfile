@@ -1,4 +1,5 @@
 {
+    "suggest.enablePreselect": true,
     "suggest.noselect": true,
     "suggest.enablePreview": true,
     "suggest.floatEnable":true,
@@ -38,10 +39,11 @@
     "signature.target": "float",
     "codeLens.enable": true,
     "list.source.files.excludePatterns": ["**/.git/**"],
+    "coc.preferences.currentFunctionSymbolAutoUpdate": true,
     "coc.preferences.jumpCommand": "tab drop",
     "coc.preferences.rootPatterns":[".vim",".git",".hg",".projections.json"],
     "coc.preferences.formatOnType": true,
-    "coc.preferences.formatOnSaveFiletypes":["go","dart"],
+    "coc.preferences.formatOnSaveFiletypes":["go","dart","vue","css","markdown","js","html"],
     "snippets.ultisnips.directories": [
       "UltiSnips",
       "gosnippets/UltiSnips"
@@ -52,5 +54,7 @@
       "gofumpt":true,
       "experimentalWorkspaceModule": true
     },
-    "python.jediEnabled": false
+    "python.jediEnabled": false,
+    "volar.formatting.enable": false,
+    "prettier.disableLanguages": []
 }
