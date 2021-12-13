@@ -24,8 +24,8 @@ zsh-users/zsh-syntax-highlighting
 geometry-zsh/geometry
 djui/alias-tips
 zsh-users/zsh-autosuggestions
-zdharma/fast-syntax-highlighting
-zdharma/history-search-multi-word
+zdharma-continuum/fast-syntax-highlighting
+zdharma-continuum/history-search-multi-word
 zsh-users/zsh-completions
 EOBUNDLES
 
@@ -42,7 +42,8 @@ HISTFILE=~/.zsh_history
 
 
 # Alias
-alias e="lvim"
+alias e="nvim"
+alias lv="lvim"
 alias gogopls="go get -u -v golang.org/x/tools/gopls@master"
 alias gogu="go get -u -v "
 alias gog="go get -v "
@@ -61,10 +62,12 @@ export GOROOT=$HOME/program/go
 export GOROOT_BOOTSTRAP=$HOME/program/go1.4
 export GOPROXY=https://goproxy.cn,direct
 export GOPATH=$HOME/workspaces/go
-export PATH=$GOPATH/bin:$GOROOT/bin:/usr/local/bin:$PATH
+
+export PATH=$GOPATH/bin:$GOROOT/bin:$HOME/.local/bin:$PATH
 export NAVI_PATH=$HOME/.nzlovdotfile/navi
 
 # brew
+export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.ustc.edu.cn/brew.git"
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/bottles/
 
 # Flutter
