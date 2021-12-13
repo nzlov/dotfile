@@ -42,4 +42,4 @@ if [ $commands[navi] ]; then
   source <(navi widget zsh)
 fi
 
-source ~/.zshrc.local
+[[ ! -f ~/.zshrc.local ]] || source ~/.zshrc.local
