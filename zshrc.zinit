@@ -14,7 +14,10 @@ zinit ice wait lucid
 zinit light zsh-users/zsh-autosuggestions
 
 zinit ice wait lucid
-zinit light zdharma-continuum/fast-syntax-highlighting
+zinit load zsh-users/zsh-history-substring-search
+
+zinit ice wait lucid
+zinit load zdharma-continuum/fast-syntax-highlighting
 
 zinit ice depth"1" # git clone depth
 zinit light "geometry-zsh/geometry"
@@ -40,5 +43,9 @@ zinit snippet OMZP::wd
 
 zinit ice wait lucid
 zinit snippet OMZP::history
+
+
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 
 source ~/.nzlovdotfile/zshrc
