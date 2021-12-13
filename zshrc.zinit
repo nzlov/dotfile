@@ -36,6 +36,9 @@ zinit ice wait lucid
 zinit snippet OMZP::git
 
 zinit ice wait lucid
+zinit snippet OMZP::golang
+
+zinit ice wait lucid
 zinit snippet OMZP::sudo
 
 zinit ice wait lucid
