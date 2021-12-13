@@ -1,23 +1,24 @@
 source ~/.zplug/init.zsh
 
 # Plugin
-#zplug "plugins/brew",                               from:oh-my-zsh
-#zplug "plugins/command-not-found",                  from:oh-my-zsh
-#zplug "plugins/cp",                                 from:oh-my-zsh
-#zplug "plugins/git",                                from:oh-my-zsh
-#zplug "plugins/go",                                 from:oh-my-zsh
-#zplug "plugins/sudo",                               from:oh-my-zsh
-#zplug "plugins/wd",                                 from:oh-my-zsh
-#zplug "plugins/docker",                             from:oh-my-zsh
-#zplug "plugins/history",                            from:oh-my-zsh
+zplug "plugins/brew",                               from:oh-my-zsh
+zplug "plugins/command-not-found",                  from:oh-my-zsh
+zplug "plugins/cp",                                 from:oh-my-zsh
+zplug "plugins/git",                                from:oh-my-zsh
+zplug "plugins/go",                                 from:oh-my-zsh
+zplug "plugins/sudo",                               from:oh-my-zsh
+zplug "plugins/wd",                                 from:oh-my-zsh
+zplug "plugins/docker",                             from:oh-my-zsh
+zplug "plugins/k8s",                                from:oh-my-zsh
+zplug "plugins/history",                            from:oh-my-zsh
 
-#zplug "zsh-users/zsh-history-substring-search"
-#zplug "geometry-zsh/geometry", as:theme
-#zplug "djui/alias-tips"
-#zplug "zsh-users/zsh-autosuggestions"
-#zplug "zsh-users/zsh-syntax-highlighting"
-#zplug "zdharma/history-search-multi-word"
-#zplug "zsh-users/zsh-completions"
+zplug "djui/alias-tips"
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-history-substring-search"
+zplug "zsh-users/zsh-completions"
+
+zplug "geometry-zsh/geometry", as:theme
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -30,44 +31,30 @@ fi
 # Then, source plugins and add commands to $PATH
 zplug load
 
-# History
-SAVEHIST=999999999
-HISTFILE=~/.zsh_history
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 
-# Alias
-alias e="nvim"
-alias gogu="go get -u -v "
-alias gog="go get -v "
-alias goi="go install -v "
-alias gob="go build -v "
-alias gobw="GOOS=windows go build -v "
-alias gobl="GOOS=linux go build -v "
-alias gor="go run -v "
-alias c="navi"
-alias cq="navi query"
-alias cs="navi search"
+source ~/.nzlovdotfile/zshrc
 
+### Added by Zinit's installer
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
+fi
 
-# Export
-export GO111MODULE="on"
-export GOPROXY=https://goproxy.cn,direct
-export GOROOT_BOOTSTRAP=$HOME/program/go1.4
-export GOROOT=$HOME/program/go
-export GOPATH=$HOME/workspace/go
-export PATH=$GOPATH/bin:$GOROOT/bin:/usr/local/bin:$PATH
-export NAVI_PATH=$HOME/.nzlovdotfile/navi
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
-# Flutter
-export PUB_HOSTED_URL=https://pub.flutter-io.cn
-export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
-#export ENABLE_FLUTTER_DESKTOP=true
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
 
-# Source
-#if [ $commands[navi] ]; then
-#  source <(navi widget zsh)
-#fi
-#if [ $commands[kubectl] ]; then
-#  source <(kubectl completion zsh)
-#fi
-
-#source ~/.zshrc.local
+### End of Zinit's installer chunk

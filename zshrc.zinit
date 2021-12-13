@@ -1,0 +1,44 @@
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+source "${ZINIT_HOME}/zinit.zsh"
+
+zinit ice wait lucid
+zinit light djui/alias-tips
+
+zinit ice wait lucid
+zinit light zsh-users/zsh-completions
+
+zinit ice wait lucid
+zinit light zdharma-continuum/history-search-multi-word
+
+zinit ice wait lucid
+zinit light zsh-users/zsh-autosuggestions
+
+zinit ice wait lucid
+zinit light zdharma-continuum/fast-syntax-highlighting
+
+zinit ice depth"1" # git clone depth
+zinit light "geometry-zsh/geometry"
+ 
+# import oh-my-zsh
+zinit ice wait lucid
+zinit snippet OMZP::brew
+
+zinit ice wait lucid
+zinit snippet OMZP::command-not-found
+
+zinit ice wait lucid
+zinit snippet OMZP::cp
+
+zinit ice wait lucid
+zinit snippet OMZP::git
+
+zinit ice wait lucid
+zinit snippet OMZP::sudo
+
+zinit ice wait lucid
+zinit snippet OMZP::wd
+
+zinit ice wait lucid
+zinit snippet OMZP::history
+
+source ~/.nzlovdotfile/zshrc
