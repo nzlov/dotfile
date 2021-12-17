@@ -21,7 +21,7 @@ alias cs="navi search"
 # Export
 export GO111MODULE="on"
 export GOROOT=$HOME/program/go
-export GOROOT_BOOTSTRAP=$HOME/program/go1.4
+export GOROOT_BOOTSTRAP=$HOME/program/goboot
 export GOPROXY=https://goproxy.cn,direct
 export GOPATH=$HOME/workspaces/go
 
