@@ -1,5 +1,8 @@
 source ~/.nzlovdotfile/antigen.zsh
 
+#export http_proxy=http://localhost:1081
+#export https_proxy=http://localhost:1081
+
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
 
@@ -24,8 +27,8 @@ zsh-users/zsh-syntax-highlighting
 geometry-zsh/geometry
 djui/alias-tips
 zsh-users/zsh-autosuggestions
-zdharma-continuum/fast-syntax-highlighting
-zdharma-continuum/history-search-multi-word
+z-shell/F-Sy-H
+z-shell/H-S-MW
 zsh-users/zsh-completions
 EOBUNDLES
 
