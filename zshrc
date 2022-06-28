@@ -17,6 +17,8 @@ alias gor="go run -v "
 alias c="navi"
 alias cq="navi query"
 alias cs="navi search"
+alias hp="export http_proxy=http://localhost:1081;export https_proxy=http://localhost:1081;export no_proxy=127.0.0.1,localhost,192.168.0.0/16"
+alias nhp="unset http_proxy;unset https_proxy;unset no_proxy"
 
 # Export
 export GO111MODULE="on"
@@ -24,6 +26,7 @@ export GO111MODULE="on"
 #export GOROOT_BOOTSTRAP=$HOME/program/goboot
 export GOPROXY=https://goproxy.cn,direct
 export GOPATH=$HOME/workspaces/go
+export EDITOR=nvim
 
 export PATH=$GOPATH/bin:$GOROOT/bin:$HOME/.local/bin:$PATH
 export NAVI_PATH=$HOME/.nzlovdotfile/navi
