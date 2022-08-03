@@ -1,0 +1,93 @@
+{
+    "position": "bottom", 
+    "height": 20,
+    "modules-left": ["sway/workspaces"],
+    "modules-center": ["sway/window"],
+    "modules-right": ["cpu", "memory", "network", "pulseaudio", "custom/date", "clock", "tray", "custom/power"], 
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{icon}",
+        "format-icons": {
+            "1": "一",
+            "2": "二",
+            "3": "三",
+            "4": "四",
+            "5": "五",
+            "6": "六",
+            "7": "七",
+            "8": "八",
+            "9": "九",
+            "10": "十"
+        }
+    },
+    "cpu": {
+        "interval": 1,
+        "format": "{usage}% ",
+        "max-length": 10
+    },
+    "memory": {
+        "interval": 10,
+        "format": "{}% ",
+        "max-length": 10
+    },
+    "custom/date": {
+        "format": "  {}",
+        "interval": 3600,
+        "exec": "$HOME/.nzlovdotfile/local/bin/date.sh"
+    },
+    "custom/power": {
+        "format": "",
+        "on-click": "wlogout"
+    },
+    "clock": {
+        "format": " {:%H:%M}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "battery": {
+        "bat": "BAT1",
+        "design-capacity": true,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format-discharging": "{icon}  {capacity}%",
+        "format": " {capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-icons": [
+            "", 
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "network": {
+        "interface":"enp3s0",
+        "interval": 1,
+        "format-wifi": "  {essid}",
+        "format-ethernet": " {bandwidthDownBytes}  {bandwidthUpBytes} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "⚠  Disconnected",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "pulseaudio": {
+        "format": "{icon}  {volume}%",
+        "format-muted": " Muted",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    }
+}
