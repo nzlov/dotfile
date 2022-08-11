@@ -5,9 +5,9 @@ set $down j
 set $up k
 set $right l
 
-set $term kitty 
+set $term konsole
 set $wallpapers_path $HOME/Pictures/wallpapers
-set $expolorer $term ranger
+set $expolorer konsole -e ranger
 
 set $menu wofi --hide-scroll | xargs swaymsg exec --
 
@@ -144,12 +144,14 @@ bar {
 
 for_window {
   [instance="Waydroid"] floating enable
-  [window_type="dialog"] floating enable
   [class="Wine"] floating enable
+  [class="Menu"] floating enable
   [window_role="pop-up"] floating enable
   [window_role="bubble"] floating enable
   [window_role="dialog"] floating enable
   [window_type="dialog"] floating enable
+  [window_role="menu"] floating enable
+  [window_type="menu"] floating enable
 }
 
 

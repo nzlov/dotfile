@@ -1,24 +1,24 @@
 {
-    "position": "bottom", 
+    "position": "top", 
     "height": 20,
     "modules-left": ["sway/workspaces"],
     "modules-center": ["sway/window"],
-    "modules-right": ["cpu", "memory", "network", "pulseaudio", "custom/date", "clock", "tray", "custom/power"], 
+    "modules-right": ["custom/pacman","cpu", "memory", "network", "pulseaudio", "custom/date", "clock", "tray", "custom/power"], 
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
         "format": "{icon}",
         "format-icons": {
-            "1": "一",
-            "2": "二",
-            "3": "三",
-            "4": "四",
-            "5": "五",
-            "6": "六",
-            "7": "七",
-            "8": "八",
-            "9": "九",
-            "10": "十"
+            "1": "壹",
+            "2": "贰",
+            "3": "叁",
+            "4": "肆",
+            "5": "伍",
+            "6": "陆",
+            "7": "柒",
+            "8": "捌",
+            "9": "玖",
+            "10": "零"
         }
     },
     "cpu": {
@@ -85,6 +85,14 @@
             "default": ["", "", ""]
         },
         "on-click": "pavucontrol"
+    },
+    "custom/pacman": {
+        "format": "{}  ",
+        "interval": 3600,                     // every hour
+        "exec": "checkupdates | wc -l",       // # of updates
+        "exec-if": "exit 0",                  // always run; consider advanced run conditions
+        "on-click": "konsole -e 'sudo pacman -Syu'; pkill -SIGRTMIN+8 waybar", // update system
+        "signal": 8
     },
     "tray": {
         "icon-size": 21,
