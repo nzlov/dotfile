@@ -64,7 +64,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec konsole
 
 # kill focused window
 bindsym $mod+q kill
@@ -223,6 +223,15 @@ bindsym $mod+Shift+q mode "$mode_system"
 
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
+for_window [class="Wine"] floating enable
+for_window [class="Menu"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="dialog"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_role="menu"] floating enable
+for_window [window_type="menu"] floating enable
+
 
 exec --no-startup-id ssh -fNL 5433:localhost:5432 root@192.168.0.3
 exec --no-startup-id ssh -fNL 6380:localhost:6379 root@192.168.0.4
