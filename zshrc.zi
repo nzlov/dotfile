@@ -8,6 +8,7 @@ zi load z-shell/F-Sy-H
 zi load z-shell/H-S-MW
 zi load zsh-users/zsh-completions
 zi load zsh-users/zsh-history-substring-search
+zi load mfaerevaag/wd
 
 zi snippet OMZP::brew
 zi snippet OMZP::command-not-found
@@ -16,7 +17,6 @@ zi snippet OMZP::docker
 zi snippet OMZP::git
 zi snippet OMZP::golang
 zi snippet OMZP::sudo
-zi snippet OMZP::wd
 zi snippet OMZP::history
 
 bindkey '^[[A' history-substring-search-up
