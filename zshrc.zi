@@ -1,5 +1,8 @@
 source $HOME/.nzlovdotfile/zi-loader; zzinit
 
+autoload -Uz compinit
+compinit
+
 zi load zsh-users/zsh-syntax-highlighting
 zi load geometry-zsh/geometry
 zi load djui/alias-tips
@@ -10,14 +13,14 @@ zi load zsh-users/zsh-completions
 zi load zsh-users/zsh-history-substring-search
 zi load mfaerevaag/wd
 
-zi snippet OMZP::brew
-zi snippet OMZP::command-not-found
-zi snippet OMZP::cp
-zi snippet OMZP::docker
-zi snippet OMZP::git
-zi snippet OMZP::golang
-zi snippet OMZP::sudo
-zi snippet OMZP::history
+zi snippet OMZ::plugins/brew
+zi snippet OMZ::plugins/command-not-found
+zi snippet OMZ::plugins/cp
+zi snippet OMZ::plugins/docker
+zi snippet OMZ::plugins/git
+zi snippet OMZ::plugins/golang
+zi snippet OMZ::plugins/sudo
+zi snippet OMZ::plugins/history
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
