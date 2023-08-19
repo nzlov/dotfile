@@ -12,6 +12,7 @@ zi load z-shell/H-S-MW
 zi load zsh-users/zsh-completions
 zi load zsh-users/zsh-history-substring-search
 zi load mfaerevaag/wd
+zi load agkozak/zsh-z
 
 zi snippet OMZ::plugins/brew
 zi snippet OMZ::plugins/command-not-found
