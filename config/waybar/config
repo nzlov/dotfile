@@ -1,8 +1,8 @@
 {
     "position": "top", 
     "height": 20,
-    "modules-left": ["sway/workspaces"],
-    "modules-center": ["sway/window"],
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["hyprland/window"],
     "modules-right": ["custom/pacman","cpu", "memory", "network", "pulseaudio", "custom/date", "clock", "tray", "custom/power"], 
     "sway/workspaces": {
         "disable-scroll": true,
@@ -64,7 +64,7 @@
         ]
     },
     "network": {
-        "interface":"enp3s0",
+        "interface":"wlp45s0",
         "interval": 1,
         "format-wifi": "  {essid}",
         "format-ethernet": " {bandwidthDownBytes}  {bandwidthUpBytes} ",
