@@ -3,8 +3,8 @@
     "height": 20,
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["custom/pacman","cpu", "memory", "network", "pulseaudio", "custom/date", "clock", "tray", "custom/power"], 
-    "sway/workspaces": {
+    "modules-right": ["custom/pacman","cpu", "memory", "network", "pulseaudio","power-profiles-daemon", "custom/date", "clock", "tray", "custom/power"], 
+    "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
         "format": "{icon}",
@@ -20,6 +20,23 @@
             "9": "玖",
             "10": "零"
         }
+    },
+    "power-profiles-daemon": {
+      "format": "{icon}",
+      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+      "tooltip": true,
+      "format-icons": {
+        "default": "",
+        "performance": "",
+        "balanced": "",
+        "power-saver": ""
+      }
+    },
+    "backlight/slider": {
+      "min": 0,
+      "max": 100,
+      "orientation": "horizontal",
+      "device": "intel_backlight"
     },
     "cpu": {
         "interval": 1,
@@ -41,7 +58,7 @@
         "on-click": "wlogout"
     },
     "clock": {
-        "format": " {:%H:%M}",
+        "format": "  {:%H:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
     },
@@ -64,9 +81,9 @@
         ]
     },
     "network": {
-        "interface":"wlp45s0",
+        "interface":"wlan0",
         "interval": 1,
-        "format-wifi": "  {essid}",
+        "format-wifi": "   {essid}",
         "format-ethernet": " {bandwidthDownBytes}  {bandwidthUpBytes} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "⚠  Disconnected",

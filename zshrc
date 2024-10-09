@@ -53,3 +53,5 @@ if [ $commands[navi] ]; then
 fi
 
 [[ ! -f ~/.zshrc_local ]] || source ~/.zshrc_local
+
+[[ ! -f /usr/share/nvm/init-nvm.sh ]] || source /usr/share/nvm/init-nvm.sh

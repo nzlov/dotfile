@@ -2,13 +2,13 @@
     border: none;
     border-radius: 0;
     font-family: NotoSans Nerd Font, sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     min-height: 0;
 }
 
 window#waybar {
     background: transparent;
-    color: black;
+    color: #ffffff;
 }
 
 #workspaces {
@@ -22,9 +22,9 @@ window#waybar {
     color: #c0caf5;
 }
 
-#workspaces button.focused {
+#workspaces button.active {
     color: #24283b;
-    background-color: #7aa2f7;
+    background-color: #ffffff;
     border-radius: 5px;
 }
 
@@ -34,19 +34,10 @@ window#waybar {
 	border-radius: 5px;
 }
 
-#custom-pacman, #custom-date, #cpu, #memory, #clock, #tray, #battery, #pulseaudio, #network {
+#custom-pacman, #custom-date, #cpu, #memory, #clock, #tray, #battery, #pulseaudio, #network, #power-profiles-daemon, #backlight-slider {
 	background-color: #24283b;
 	padding: 5px 10px;
 	margin: 5px 0px;
-}
-
-#tray {
-    border-radius: 5px;
-	margin-right: 10px;
-	margin-top: 5px;
-	margin-bottom: 5px;
-	margin-left: 0px;
-	padding: 5px 10px;
 }
 
 #custom-date {
@@ -56,17 +47,13 @@ window#waybar {
 #custom-power {
 	color: #24283b;
 	background-color: #db4b4b;
-	border-radius: 5px;
-	margin-right: 10px;
-	margin-top: 5px;
-	margin-bottom: 5px;
-	margin-left: 0px;
-	padding: 5px 10px;
+	border-radius: 10px;
+    padding: 0px 20px;
+	margin: 5px;
 }
 
 #clock {
     color: #b48ead;
-    border-radius: 0px 5px 5px 0px;
     margin-right: 10px;
 }
 
@@ -81,12 +68,12 @@ window#waybar {
 #battery.warning:not(.charging) {
     background-color: #f7768e;
     color: #24283b;
-    border-radius: 5px 5px 5px 5px;
+    border-radius: 10px;
 }
 
 #custom-pacman {
 	color: #9ece6a;
-	border-radius: 5px 0px 0px 5px;
+	border-radius: 10px ;
 }
 
 #cpu {
@@ -102,5 +89,13 @@ window#waybar {
 }
 
 #pulseaudio {
+	color: #e0af68;
+}
+
+#backlight-slider {
+	color: #e0af68;
+}
+
+#power-profiles-daemon{
 	color: #e0af68;
 }
