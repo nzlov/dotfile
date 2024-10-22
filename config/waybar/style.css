@@ -2,7 +2,7 @@
     border: none;
     border-radius: 0;
     font-family: NotoSans Nerd Font, sans-serif;
-    font-size: 16px;
+    font-size: 18px;
     min-height: 0;
 }
 
@@ -34,9 +34,9 @@ window#waybar {
 	border-radius: 5px;
 }
 
-#custom-pacman, #custom-date, #cpu, #memory, #clock, #tray, #battery, #pulseaudio, #network, #power-profiles-daemon, #backlight-slider {
+#custom-pacman, #custom-date, #cpu, #memory, #clock, #tray, #battery, #pulseaudio, #network, #power-profiles-daemon, #backlight-slider{
 	background-color: #24283b;
-	padding: 5px 10px;
+	padding: 10px 10px;
 	margin: 5px 0px;
 }
 
@@ -47,14 +47,15 @@ window#waybar {
 #custom-power {
 	color: #24283b;
 	background-color: #db4b4b;
-	border-radius: 10px;
-    padding: 0px 20px;
+	border-radius: 20px;
+    padding:  0px 20px 0px 15px;
 	margin: 5px;
 }
 
 #clock {
     color: #b48ead;
     margin-right: 10px;
+	border-radius: 0px 10px 10px 0px ;
 }
 
 #battery {
@@ -73,7 +74,11 @@ window#waybar {
 
 #custom-pacman {
 	color: #9ece6a;
-	border-radius: 10px ;
+	border-radius: 10px 0px 0px 10px ;
+}
+
+#tray {
+    border-radius: 10px;
 }
 
 #cpu {

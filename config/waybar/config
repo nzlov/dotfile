@@ -3,7 +3,7 @@
     "height": 20,
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["custom/pacman","cpu", "memory", "network", "pulseaudio","power-profiles-daemon", "custom/date", "clock", "tray", "custom/power"], 
+    "modules-right": ["custom/pacman","cpu", "memory", "network", "pulseaudio","power-profiles-daemon","battery", "custom/date", "clock", "tray", "custom/power"], 
     "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
@@ -63,14 +63,14 @@
         "format-alt": "{:%Y-%m-%d}"
     },
     "battery": {
-        "bat": "BAT1",
+        "bat": "BAT0",
         "design-capacity": true,
         "states": {
             "warning": 30,
             "critical": 15
         },
-        "format-discharging": "{icon}  {capacity}%",
-        "format": " {capacity}%",
+        "format": "{icon}  {capacity}%",
+        "format-charging": " {capacity}%",
         "format-alt": "{time} {icon}",
         "format-icons": [
             "", 
@@ -108,7 +108,7 @@
         "interval": 3600,                     // every hour
         "exec": "checkupdates | wc -l",       // # of updates
         "exec-if": "exit 0",                  // always run; consider advanced run conditions
-        "on-click": "konsole -e 'sudo pacman -Syu'; pkill -SIGRTMIN+8 waybar", // update system
+        "on-click": "alacritty -e sudo pacman -Syu; pkill -SIGRTMIN+8 waybar", // update system
         "signal": 8
     },
     "tray": {

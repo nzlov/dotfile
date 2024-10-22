@@ -1,5 +1,7 @@
 source $HOME/.nzlovdotfile/zi-loader; zzinit
 
+export ZSH_CACHE_DIR=$HOME/.zi/
+
 autoload -Uz compinit
 compinit
 
@@ -25,5 +27,6 @@ zi snippet OMZ::plugins/history
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+
 
 source ~/.nzlovdotfile/zshrc

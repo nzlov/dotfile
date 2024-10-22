@@ -25,6 +25,8 @@ alias pacs='pacman --color always -Sl | sed -e "s: :/:; /installed/d" | cut -f 1
 alias yays='yay --color always -Sl | sed -e "s: :/:; /installed/d" | cut -f 1 -d " " | fzf --multi --ansi --preview "yay -Si {1}" | xargs -ro sudo yay -S'
 alias pacr="pacman --color always -Q | cut -f 1 -d ' ' | fzf --multi --ansi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rns"
 
+alias snas="ssh root@100.64.0.2"
+
 unalias gops
 
 # Export
