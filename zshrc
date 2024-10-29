@@ -18,7 +18,7 @@ alias gor="go run -v "
 alias c="navi"
 alias cq="navi query"
 alias cs="navi search"
-alias hp="export http_proxy=http://localhost:1081;export https_proxy=http://localhost:1081;export no_proxy=127.0.0.1,localhost,192.168.0.0/16"
+alias hp="export HTTP_PROXY=http://localhost:1081;export HTTPS_PROXY=http://localhost:1081;export NO_PROXY=127.0.0.1,localhost,192.168.0.0/16;export http_proxy=http://localhost:1081;export https_proxy=http://localhost:1081;export no_proxy=127.0.0.1,localhost,192.168.0.0/16"
 alias nhp="unset http_proxy;unset https_proxy;unset no_proxy"
 
 alias pacs='pacman --color always -Sl | sed -e "s: :/:; /installed/d" | cut -f 1 -d " " | fzf --multi --ansi --preview "pacman -Si {1}" | xargs -ro sudo pacman -S'
@@ -57,3 +57,11 @@ fi
 [[ ! -f ~/.zshrc_local ]] || source ~/.zshrc_local
 
 [[ ! -f /usr/share/nvm/init-nvm.sh ]] || source /usr/share/nvm/init-nvm.sh
+
+
+# pnpm
+export PNPM_HOME="/home/nzlov/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
