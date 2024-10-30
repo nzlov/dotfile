@@ -34,7 +34,7 @@ window#waybar {
 	border-radius: 5px;
 }
 
-#custom-pacman, #custom-date, #cpu, #memory, #clock, #tray, #battery, #pulseaudio, #network, #power-profiles-daemon, #backlight-slider{
+#custom-pacman, #custom-date, #cpu, #memory, #temperature.cpu, #temperature.gpu, #clock, #tray, #battery, #pulseaudio, #network, #power-profiles-daemon, #backlight-slider{
 	background-color: #24283b;
 	padding: 10px 10px;
 	margin: 5px 0px;
@@ -89,6 +89,14 @@ window#waybar {
 	color: #e0af68;
 }
 
+#temperature.cpu {
+    color: #c9c328;
+}
+
+#temperature.gpu {
+    color: #c9c328;
+}
+
 #network {
 	color: #f7768e;
 }
@@ -102,5 +110,5 @@ window#waybar {
 }
 
 #power-profiles-daemon{
-	color: #e0af68;
+	color: #00a800;
 }
