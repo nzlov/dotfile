@@ -3,7 +3,7 @@
     "height": 20,
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["custom/pacman","cpu", "memory", "custom/temp", "network", "pulseaudio","power-profiles-daemon","battery", "custom/date", "clock", "tray", "custom/power"], 
+    "modules-right": ["custom/pacman","cpu", "memory", "custom/temp", "network", "pulseaudio","power-profiles-daemon","battery", "custom/date", "tray", "custom/power"], 
     "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
