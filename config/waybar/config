@@ -88,11 +88,11 @@
     "network": {
         "interface":"wlan0",
         "interval": 1,
-        "format-wifi": "{essid}    {bandwidthUpBytes} /  {bandwidthDownBytes}",
-        "format-ethernet": " {bandwidthDownBytes} / {bandwidthUpBytes}",
+        "format-wifi": "{bandwidthDownBytes}🝰{bandwidthUpBytes}",
+        "format-ethernet": "{bandwidthDownBytes}🝰{bandwidthUpBytes}",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-alt": "{ifname}: {essid} {ipaddr}/{cidr}"
     },
     "pulseaudio": {
         "format": "{icon}   {volume}%",
