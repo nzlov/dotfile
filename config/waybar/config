@@ -3,7 +3,7 @@
     "height": 20,
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["custom/pacman","cpu", "temperature#cpu", "memory", "temperature#gpu", "network", "pulseaudio","power-profiles-daemon","battery", "custom/date", "clock", "tray", "custom/power"], 
+    "modules-right": ["custom/pacman","cpu", "memory", "custom/temp", "network", "pulseaudio","power-profiles-daemon","battery", "custom/date", "clock", "tray", "custom/power"], 
     "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
@@ -48,13 +48,10 @@
         "format": "{}%",
         "max-length": 10
     },
-    "temperature#cpu": {
-        "hwmon-path":"/sys/devices/pci0000:00/0000:00:14.3/PNP0C09:00/hwmon/hwmon4/temp1_input",
-        "format": "C{temperatureC}°C",
-    },
-    "temperature#gpu": {
-        "hwmon-path":"/sys/devices/pci0000:00/0000:00:14.3/PNP0C09:00/hwmon/hwmon4/temp2_input",
-        "format": "G{temperatureC}°C",
+    "custom/temp": {
+        "interval": 10,
+        "return-type": "json",
+        "exec": "$HOME/.nzlovdotfile/config/waybar/temp.sh",
     },
     "custom/date": {
         "format": "{}",
