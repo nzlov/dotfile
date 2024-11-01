@@ -36,14 +36,12 @@ window#waybar {
 
 #custom-pacman, #custom-date, #cpu, #memory, #custom-temp, #clock, #tray, #battery, #pulseaudio, #network, #power-profiles-daemon, #backlight-slider{
 	background-color: #24283b;
-	padding: 10px 10px;
+	padding: 5px 5px;
 	margin: 5px 0px;
 }
 
 #custom-date {
 	color: #7dcfff;
-    margin-right: 5px;
-	border-radius: 0px 10px 10px 0px ;
 }
 
 #custom-power {
@@ -55,7 +53,8 @@ window#waybar {
 }
 
 #clock {
-    color: #b48ead;
+	color: #7dcfff;
+	padding: 0px 10px 0px 0px;
     margin-right: 10px;
 	border-radius: 0px 10px 10px 0px ;
 }
