@@ -97,6 +97,7 @@
     "pulseaudio": {
         "format": "{icon}   {volume}%",
         "format-muted": "",
+        "reverse-scrolling": true,
         "format-icons": {
             "headphone": "",
             "hands-free": "",
