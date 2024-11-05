@@ -3,7 +3,7 @@ tmpls:
   - t: /home/nzlov/.nzlovdotfile/config/qt6ct/qt.tmpl
     o: /home/nzlov/.config/qt6ct/colors/dt.conf
   - t: /home/nzlov/.nzlovdotfile/config/wofi/wofi.tmpl
-    o: /home/nzlov/.nzlovdotfile/config/wofi/style.css
+    o: /home/nzlov/.config/wofi/style.css
   - t: /home/nzlov/.nzlovdotfile/config/waybar/waybar.tmpl
-    o: /home/nzlov/.nzlovdotfile/config/waybar/style.css
+    o: /home/nzlov/.config/waybar/style.css
     e: killall -SIGUSR2 waybar
