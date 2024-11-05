@@ -42,53 +42,53 @@ window#waybar {
 }
 
 #custom-pacman {
-	color: #A89F9A;
+	color: #E2CAB6;
 	border-radius: 10px 0px 0px 10px ;
 }
 
 #custom-cpu {
-	color: #A89F9A;
+	color: #E2CAB6;
 }
 
 #custom-memory {
-	color: #A89F9A;
+	color: #E2CAB6;
 }
 
 #custom-temp {
-  color: #A89F9A;
+  color: #E2CAB6;
 }
 
 #network {
-	color: #A89F9A;
+	color: #E2CAB6;
 }
 
 #pulseaudio {
-	color: #A89F9A;
+	color: #E2CAB6;
 }
 
 #power-profiles-daemon{
-	color: #A89F9A;
+	color: #E2CAB6;
 }
 
 #battery {
-    color: #A89F9A;
+    color: #E2CAB6;
 }
 
 #battery.charging {
-	color: #A89F9A;
+	color: #E2CAB6;
 }
 
 #battery.warning:not(.charging) {
-	color: #A89F9A;
+	color: #E2CAB6;
   border-radius: 10px;
 }
 
 #custom-date {
-	color: #A89F9A;
+	color: #E2CAB6;
 }
 
 #clock {
-	color: #A89F9A;
+	color: #E2CAB6;
 	padding: 0px 10px 0px 0px;
   margin-right: 10px;
 	border-radius: 0px 10px 10px 0px ;

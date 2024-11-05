@@ -44,7 +44,7 @@
         "exec": "$HOME/.nzlovdotfile/config/waybar/cpu.sh",
     },
     "custom/memory": {
-        "interval": 1,
+        "interval": 10,
         "return-type": "json",
         "exec": "$HOME/.nzlovdotfile/config/waybar/mem.sh",
     },
