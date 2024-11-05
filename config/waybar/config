@@ -56,7 +56,7 @@
     "custom/date": {
         "format": "{}",
         "interval": 3600,
-        "exec": "$HOME/.nzlovdotfile/local/bin/date.sh"
+        "exec": "date +'%Y-%m-%d %a'"
     },
     "custom/power": {
         "format": "",
