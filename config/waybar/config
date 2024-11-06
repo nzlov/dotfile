@@ -3,7 +3,7 @@
     "height": 20,
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["custom/pacman","custom/cpu", "custom/memory", "custom/temp", "network", "pulseaudio","power-profiles-daemon","battery", "custom/date", "clock", "tray", "custom/power"], 
+    "modules-right": ["custom/pacman","custom/cpu", "custom/memory", "custom/temp", "custom/weather", "network", "pulseaudio","power-profiles-daemon","battery", "custom/date", "clock", "tray", "custom/power"], 
     "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
@@ -52,6 +52,11 @@
         "interval": 10,
         "return-type": "json",
         "exec": "$HOME/.nzlovdotfile/config/waybar/temp.sh",
+    },
+    "custom/weather": {
+        "interval": 3600,
+        "return-type": "json",
+        "exec": "wbw -lat 2.71 -lon 124.14",
     },
     "custom/date": {
         "format": "{}",

@@ -35,60 +35,22 @@ window#waybar {
 	border-radius: 5px;
 }
 
-#custom-pacman, #custom-date, #custom-cpu, #custom-memory, #custom-temp, #clock, #tray, #battery, #pulseaudio, #network, #power-profiles-daemon, #backlight-slider{
+#custom-pacman, #custom-date, #custom-cpu, #custom-memory, #custom-temp, #custom-weather, #clock, #tray, #battery, #pulseaudio, #network, #power-profiles-daemon, #backlight-slider{
+	color: #{{.C0}};
 	background-color: #{{.C2}};
 	padding: 5px 5px;
 	margin: 5px 0px;
 }
 
 #custom-pacman {
-	color: #{{.C0}};
 	border-radius: 10px 0px 0px 10px ;
 }
 
-#custom-cpu {
-	color: #{{.C0}};
-}
-
-#custom-memory {
-	color: #{{.C0}};
-}
-
-#custom-temp {
-  color: #{{.C0}};
-}
-
-#network {
-	color: #{{.C0}};
-}
-
-#pulseaudio {
-	color: #{{.C0}};
-}
-
-#power-profiles-daemon{
-	color: #{{.C0}};
-}
-
-#battery {
-    color: #{{.C0}};
-}
-
-#battery.charging {
-	color: #{{.C0}};
-}
-
 #battery.warning:not(.charging) {
-	color: #{{.C0}};
   border-radius: 10px;
 }
 
-#custom-date {
-	color: #{{.C0}};
-}
-
 #clock {
-	color: #{{.C0}};
 	padding: 0px 10px 0px 0px;
   margin-right: 10px;
 	border-radius: 0px 10px 10px 0px ;
@@ -105,9 +67,3 @@ window#waybar {
     padding:  0px 20px 0px 15px;
 	margin: 5px;
 }
-
-
-#backlight-slider {
-	color: #e0af68;
-}
-
