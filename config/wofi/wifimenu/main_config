@@ -1,0 +1,6 @@
+#hide_search=true
+prompt=Search WiFi Networks
+layer=overlay
+width=20%
+height=20%
+dynamic_lines=true
