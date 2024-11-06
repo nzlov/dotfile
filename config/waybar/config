@@ -56,7 +56,7 @@
     "custom/weather": {
         "interval": 3600,
         "return-type": "json",
-        "exec": "wbw -lat 2.71 -lon 124.14",
+        "exec": "wbw -lat 36.71 -lon 119.14",
     },
     "custom/date": {
         "format": "{}",

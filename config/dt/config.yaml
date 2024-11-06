@@ -1,5 +1,11 @@
+size: 3
+bg: 2
 img: /home/nzlov/.config/hypr/wallpaper.jpg
 tmpls:
+  - t: /home/nzlov/.nzlovdotfile/config/hypr/hyprlock.tmpl
+    o: /home/nzlov/.config/hypr/hyprlock.conf
+  - t: /home/nzlov/.nzlovdotfile/config/wlogout/style.tmpl
+    o: /home/nzlov/.config/wlogout/style.css
   - t: /home/nzlov/.nzlovdotfile/config/qt6ct/qt.tmpl
     o: /home/nzlov/.config/qt6ct/colors/dt.conf
   - t: /home/nzlov/.nzlovdotfile/config/wofi/wofi.tmpl
