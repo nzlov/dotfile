@@ -1,7 +1,7 @@
 style=/home/nzlov/.config/wofi/style.css
 show=drun
-width=800
-height=800
+width=30%
+height=40%
 always_parse_args=true
 show_all=true
 print_command=true
