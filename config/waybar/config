@@ -56,7 +56,6 @@
     "custom/weather": {
         "interval": 3600,
         "return-type": "json",
-        "exec-if": "exit 0",                  // always run; consider advanced run conditions
         "exec": "wbw -lat 36.71 -lon 119.14",
     },
     "custom/date": {
