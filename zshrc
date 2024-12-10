@@ -54,6 +54,10 @@ if [ $commands[navi] ]; then
   source <(navi widget zsh)
 fi
 
+if [ $commands[gops] ]; then
+  source <(gops completion zsh)
+fi
+
 [[ ! -f ~/.zshrc_local ]] || source ~/.zshrc_local
 
 [[ ! -f /usr/share/nvm/init-nvm.sh ]] || source /usr/share/nvm/init-nvm.sh
