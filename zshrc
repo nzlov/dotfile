@@ -25,15 +25,15 @@ alias pacs='pacman --color always -Sl | sed -e "s: :/:; /installed/d" | cut -f 1
 alias yays='yay --color always -Sl | sed -e "s: :/:; /installed/d" | cut -f 1 -d " " | fzf --multi --ansi --preview "yay -Si {1}" | xargs -ro sudo yay -S'
 alias pacr="pacman --color always -Q | cut -f 1 -d ' ' | fzf --multi --ansi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rns"
 
-alias snas="ssh root@100.64.0.2"
+alias snas="ssh root@100.64.0.1"
 
 unalias gops
 
 # Export
-export GO111MODULE="on"
+#export GO111MODULE="on"
 #export GOROOT=$HOME/program/go
 #export GOROOT_BOOTSTRAP=$HOME/program/goboot
-export GOPROXY=https://goproxy.cn,direct
+#export GOPROXY=https://goproxy.cn,direct
 export GOPATH=$HOME/workspaces/go
 export EDITOR=nvim
 
@@ -60,7 +60,8 @@ fi
 
 [[ ! -f ~/.zshrc_local ]] || source ~/.zshrc_local
 
-[[ ! -f /usr/share/nvm/init-nvm.sh ]] || source /usr/share/nvm/init-nvm.sh
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 
 # pnpm
