@@ -14,6 +14,7 @@ alias goi="go install -v "
 alias gob="go build -v "
 alias gobw="GOOS=windows CGO_ENABLED=0 go build -v "
 alias gobl="GOOS=linux CGO_ENABLED=0 go build -v "
+alias gobwa="GOOS=js GOARCH=wasm go build -v -o web/app.wasm"
 alias gor="go run -v "
 alias c="navi"
 alias cq="navi query"
@@ -65,8 +66,11 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 
 # pnpm
-export PNPM_HOME="/home/nzlov/.local/share/pnpm"
+export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
+
+# bun
+export PATH="$HOME/.bun/bin:$PATH"
